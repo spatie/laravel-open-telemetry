@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Spatie\OpenTelemetry\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class OpenTelemetryCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-open-telemetry';
 
     public $description = 'My command';
 
