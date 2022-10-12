@@ -5,12 +5,12 @@ namespace Spatie\OpenTelemetry\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Spatie\OpenTelemetry\OpenTelemetry
+ * @see \Spatie\OpenTelemetry\Support\Measure
  */
-class OpenTelemetry extends Facade
+class Measure extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Spatie\OpenTelemetry\OpenTelemetry::class;
+        return \Spatie\OpenTelemetry\Support\Measure::class;
     }
 }

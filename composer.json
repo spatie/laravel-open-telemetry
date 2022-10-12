@@ -17,8 +17,14 @@
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.13.0",
-        "illuminate/contracts": "^9.0"
+        "illuminate/contracts": "^9.0",
+        "illuminate/http": "^9.34",
+        "open-telemetry/api": "^0.0.15",
+        "open-telemetry/opentelemetry": "^0.0.15",
+        "open-telemetry/sdk": "^0.0.15",
+        "open-telemetry/sdk-contrib": "^0.0.15",
+        "php-http/guzzle7-adapter": "^1.0",
+        "spatie/laravel-package-tools": "^1.13.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -31,7 +37,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
-        "spatie/laravel-ray": "^1.26"
+        "spatie/laravel-ray": "^1.31"
     },
     "autoload": {
         "psr-4": {
@@ -63,7 +69,7 @@
                 "Spatie\\OpenTelemetry\\OpenTelemetryServiceProvider"
             ],
             "aliases": {
-                "OpenTelemetry": "Spatie\\OpenTelemetry\\Facades\\OpenTelemetry"
+                "Measure": "Spatie\\OpenTelemetry\\Facades\\Measure"
             }
         }
     },

@@ -1,5 +1,11 @@
 <?php
 
+use Spatie\OpenTelemetry\Facades\Measure;
+
+
 it('can test', function () {
-    expect(true)->toBeTrue();
+   Measure::start('hey');
+
+    Measure::stop('hey');
+
 });
