@@ -2,9 +2,6 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
-use OpenTelemetry\SDK\Common\Time\StopWatchFactory;
-use OpenTelemetry\SDK\Trace\RandomIdGenerator;
-
 class Span
 {
     protected StopWatch $stopWatch;

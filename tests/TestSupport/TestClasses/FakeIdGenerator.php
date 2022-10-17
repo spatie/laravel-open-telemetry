@@ -19,11 +19,11 @@ class FakeIdGenerator extends IdGenerator
 
     public function traceId(): string
     {
-        return (string)self::$traceId++;
+        return (string) self::$traceId++;
     }
 
     public function spanId(): string
     {
-        return (string)self::$spanId++;
+        return (string) self::$spanId++;
     }
 }

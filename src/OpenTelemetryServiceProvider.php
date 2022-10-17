@@ -10,7 +10,6 @@ use Spatie\OpenTelemetry\Drivers\Multidriver;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Measure;
 use Spatie\OpenTelemetry\Support\StopWatch;
-use Spatie\OpenTelemetry\Support\Trace;
 
 class OpenTelemetryServiceProvider extends PackageServiceProvider
 {
@@ -47,7 +46,8 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
                 return app($driverClass)->configure($config);
             })
-            ->each(fn(Driver $driver) => $multiDriver->addDriver($driver));
+            ->each(fn (Driver $driver) => $multiDriver->addDriver($driver));
+
         return $multiDriver;
     }
 }

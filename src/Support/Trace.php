@@ -2,8 +2,6 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
-use OpenTelemetry\SDK\Trace\RandomIdGenerator;
-
 class Trace
 {
     public static function start(string $id = null, string $name = ''): self
@@ -11,7 +9,7 @@ class Trace
         return new self($id, $name);
     }
 
-    public function __construct(protected ?string $id = null, protected ?string $name)
+    public function __construct(protected ?string $id, protected ?string $name)
     {
         $this->id ??= app(IdGenerator::class)->spanId();
     }

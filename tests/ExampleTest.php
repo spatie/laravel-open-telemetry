@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Http;
 use Spatie\OpenTelemetry\Facades\Measure;
-use Spatie\TestTime\TestTime;
 use function Spatie\Snapshots\assertMatchesSnapshot;
+use Spatie\TestTime\TestTime;
 
 beforeEach(function () {
     TestTime::freeze('Y-m-d H:i:s', '2022-01-01 00:00:00');
@@ -23,7 +23,7 @@ it('can measure a single span', function () {
     assertMatchesSnapshot($payloads);
 });
 
-it('can measure multiple spans', function() {
+it('can measure multiple spans', function () {
     Measure::start('first');
 
     TestTime::addSecond();
@@ -41,7 +41,7 @@ it('can measure multiple spans', function() {
     assertMatchesSnapshot($payloads);
 });
 
-it('can measure nested spans', function() {
+it('can measure nested spans', function () {
     Measure::start('parent');
 
     Measure::start('child');

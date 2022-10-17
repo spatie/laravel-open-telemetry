@@ -6,7 +6,7 @@ use Spatie\OpenTelemetry\Support\Span;
 
 class Multidriver implements Driver
 {
-    /** @var array<int, Driver>  */
+    /** @var array<int, Driver> */
     protected array $drivers = [];
 
     public function addDriver(Driver $driver): self
@@ -18,7 +18,7 @@ class Multidriver implements Driver
 
     public function sendSpan(Span $span): self
     {
-        foreach($this->drivers as $driver) {
+        foreach ($this->drivers as $driver) {
             $driver->sendSpan($span);
         }
 

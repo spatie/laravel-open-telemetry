@@ -6,7 +6,7 @@ use Spatie\OpenTelemetry\Support\Span;
 
 class MemoryDriver implements Driver
 {
-    /** @var array<int, Span>  */
+    /** @var array<int, Span> */
     public array $sentSpans = [];
 
     public function sendSpan(Span $span)
@@ -25,5 +25,4 @@ class MemoryDriver implements Driver
             'sentSpans' => collect($this->sentSpans)->map->toArray()->toArray(),
         ];
     }
-
 }
