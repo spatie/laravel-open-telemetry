@@ -17,7 +17,7 @@ class Measure
 
     public function __construct(Driver $driver)
     {
-        $this->trace = Trace::start();
+        $this->trace = Trace::start(name: config('open-telemetry.default_trace_name'));
 
         $this->driver = $driver;
     }

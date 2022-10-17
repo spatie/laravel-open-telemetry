@@ -1,10 +1,14 @@
 <?php
 
-namespace Spatie\OpenTelemetry\Tests;
+namespace Spatie\OpenTelemetry\Tests\TestSupport;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
+use Spatie\OpenTelemetry\Support\IdGenerator;
+use Spatie\OpenTelemetry\Support\StopWatch;
+use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
+use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeStopWatch;
 
 class TestCase extends Orchestra
 {
@@ -12,9 +16,13 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Spatie\\OpenTelemetry\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
+        config()->set('open-telemetry.id_generator', FakeIdGenerator::class);
+        config()->set('open-telemetry.stop_watch', FakeStopWatch::class);
+
+        $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
+        $this->app->bind(StopWatch::class, config('open-telemetry.stop_watch'));
+
+        FakeIdGenerator::reset();
     }
 
     protected function getPackageProviders($app)

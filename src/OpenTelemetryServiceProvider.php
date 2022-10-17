@@ -7,7 +7,9 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Commands\OpenTelemetryCommand;
 use Spatie\OpenTelemetry\Drivers\Driver;
 use Spatie\OpenTelemetry\Drivers\Multidriver;
+use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Measure;
+use Spatie\OpenTelemetry\Support\StopWatch;
 use Spatie\OpenTelemetry\Support\Trace;
 
 class OpenTelemetryServiceProvider extends PackageServiceProvider
@@ -24,7 +26,8 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
     public function bootingPackage()
     {
-        parent::bootingPackage();
+        $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
+        $this->app->bind(StopWatch::class, config('open-telemetry.stop_watch'));
 
         $this->app->singleton(Measure::class, function () {
             $configuredMultiDriver = $this->getMultiDriver();

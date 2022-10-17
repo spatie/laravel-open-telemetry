@@ -1,0 +1,10 @@
+-
+    id: '1'
+    traceId: '0'
+    localEndpoint: { serviceName: Laravel }
+    name: first
+    timestamp: 1640995200
+    duration: 1
+    tags: {  }
+    parentId: null
+    otel.scope.name: Laravel

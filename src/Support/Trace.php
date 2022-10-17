@@ -6,16 +6,14 @@ use OpenTelemetry\SDK\Trace\RandomIdGenerator;
 
 class Trace
 {
-    protected string $name = 'Laravel';
-
-    public static function start(string $traceId = null): self
+    public static function start(string $id = null, string $name = ''): self
     {
-        return new self($traceId);
+        return new self($id, $name);
     }
 
-    public function __construct(protected ?string $id = null)
+    public function __construct(protected ?string $id = null, protected ?string $name)
     {
-        $this->id ??= (new RandomIdGenerator())->generateTraceId();
+        $this->id ??= app(IdGenerator::class)->spanId();
     }
 
     public function id(): string

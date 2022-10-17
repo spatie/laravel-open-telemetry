@@ -4,7 +4,7 @@ namespace Spatie\OpenTelemetry\Support;
 
 use Exception;
 
-class Stopwatch
+class StopWatch
 {
     protected ?int $startTime = null;
 
@@ -31,7 +31,7 @@ class Stopwatch
 
     public function stopTime(): ?int
     {
-        return $this->stopTime();
+        return $this->stopTime;
     }
 
     public function elapsedTime(): int

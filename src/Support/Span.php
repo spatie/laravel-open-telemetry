@@ -7,19 +7,22 @@ use OpenTelemetry\SDK\Trace\RandomIdGenerator;
 
 class Span
 {
-    protected Stopwatch $stopWatch;
+    protected StopWatch $stopWatch;
 
     protected string $id;
 
     public string $name;
 
-    public function __construct(string $name, protected Trace $trace, protected ?Span $parentSpan = null)
+    public function __construct(
+        string $name, protected
+        Trace $trace, protected
+        ?Span $parentSpan = null)
     {
         $this->name = $name;
 
-        $this->stopWatch = (new Stopwatch())->start();
+        $this->stopWatch = app(StopWatch::class)->start();
 
-        $this->id ??= (new RandomIdGenerator())->generateSpanId();
+        $this->id ??= app(IdGenerator::class)->spanId();
     }
 
     public function id(): int
@@ -52,7 +55,7 @@ class Span
             'duration' => $this->stopWatch->elapsedTime(),
             'tags' => [],
             'parentId' => $this->parentSpan?->id(),
-            'otel.scope.name' => 'to do fill in',
+            'otel.scope.name' => $this->trace->getName(),
         ];
     }
 }

@@ -18,4 +18,12 @@ class MemoryDriver implements Driver
     {
         return $this;
     }
+
+    public function allPayloads(): array
+    {
+        return [
+            'sentSpans' => collect($this->sentSpans)->map->toArray()->toArray(),
+        ];
+    }
+
 }
