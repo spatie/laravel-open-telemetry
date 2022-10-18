@@ -2,7 +2,6 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
-use Carbon\Carbon;
 use Exception;
 
 class StopWatch
@@ -15,7 +14,7 @@ class StopWatch
 
     public function __construct()
     {
-        $this->referenceTime = (int)((microtime(true) * 1_000_000_000) - hrtime(true));
+        $this->referenceTime = (int) ((microtime(true) * 1_000_000_000) - hrtime(true));
     }
 
     public function start(): self
