@@ -9,7 +9,6 @@ class IdGenerator
     public function traceId(): string
     {
         return (new RandomIdGenerator())->generateTraceId();
-
     }
 
     public function spanId(): string
