@@ -46,7 +46,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
                 return app($driverClass)->configure($config);
             })
-            ->each(fn(Driver $driver) => $multiDriver->addDriver($driver));
+            ->each(fn (Driver $driver) => $multiDriver->addDriver($driver));
 
         return $multiDriver;
     }
