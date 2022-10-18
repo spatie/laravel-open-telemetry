@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'default_trace_name' => 'Laravel',
+    'default_trace_name' => 'My package',
 
     'drivers' => [
         Spatie\OpenTelemetry\Drivers\HttpDriver::class => [
-            'url' => 'https://localhost:3303',
+            'url' => 'http://localhost:9412/api/v2/spans',
         ],
     ],
 

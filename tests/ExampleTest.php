@@ -44,9 +44,15 @@ it('can measure multiple spans', function() {
 it('can measure nested spans', function() {
     Measure::start('parent');
 
+    TestTime::addSecond();
+
     Measure::start('child');
 
+    TestTime::addSecond();
+
     Measure::stop('child');
+
+    TestTime::addSecond();
 
     Measure::stop('parent');
 

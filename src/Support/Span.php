@@ -25,7 +25,7 @@ class Span
         $this->id ??= app(IdGenerator::class)->spanId();
     }
 
-    public function id(): int
+    public function id(): string
     {
         return $this->id;
     }
@@ -51,7 +51,7 @@ class Span
                 'serviceName' => $this->trace->getName(),
             ],
             'name' => $this->name,
-            'timestamp' => $this->stopWatch->startTime(),
+            'timestamp' => intdiv($this->stopWatch->startTime(), 1000),
             'duration' => $this->stopWatch->elapsedTime(),
             'tags' => [],
             'parentId' => $this->parentSpan?->id(),
