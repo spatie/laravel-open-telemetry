@@ -18,7 +18,7 @@ it('can measure a single span', function () {
 
     Measure::stop('first');
 
-    $payloads = sentRequestPayloads();
+    $payloads = $this->sentRequestPayloads();
 
     assertMatchesSnapshot($payloads);
 });
@@ -36,7 +36,7 @@ it('can measure multiple spans', function () {
 
     Measure::stop('second');
 
-    $payloads = sentRequestPayloads();
+    $payloads = $this->sentRequestPayloads();
 
     assertMatchesSnapshot($payloads);
 });
@@ -56,7 +56,7 @@ it('can measure nested spans', function () {
 
     Measure::stop('parent');
 
-    $payloads = sentRequestPayloads();
+    $payloads = $this->sentRequestPayloads();
 
     assertMatchesSnapshot($payloads);
 });

@@ -1,1 +1,2 @@
-{  }
+sentSpans:
+    - { id: '0', traceId: '0', localEndpoint: { serviceName: 'My package' }, name: first, timestamp: 1640995, duration: 0, tags: { host.name: freeks-MacBook-Pro.local }, parentId: null, otel.scope.name: 'My package' }

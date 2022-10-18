@@ -13,10 +13,6 @@ class HttpDriver implements Driver
     {
         $payload = [$span->toArray()];
 
-        $payload[0]['tags'] = [
-            "host.name" => "freeks-MacBook-Pro.local",
-        ];
-
         Http::asJson()->async()->post($this->options['url'], $payload);
     }
 

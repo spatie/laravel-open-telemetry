@@ -31,7 +31,12 @@ class Measure
 
     public function start(string $name): Span
     {
-        $span = new Span($name, $this->trace, $this->parentSpan);
+        $span = new Span(
+            $name,
+            $this->trace,
+            config('open-telemetry.span_tag_providers'),
+            $this->parentSpan,
+        );
 
         $this->startedSpans[$name] = $span;
 

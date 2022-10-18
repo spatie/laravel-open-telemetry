@@ -2,16 +2,35 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
+use Spatie\OpenTelemetry\Support\TagProviders\TagProvider;
+
 class Trace
 {
+    /** @var array<string, mixed>  */
+    protected array $tags = [];
+
     public static function start(string $id = null, string $name = ''): self
     {
-        return new self($id, $name);
+        return new self($id, $name, config('open-telemetry.trace_tag_providers'));
     }
 
-    public function __construct(protected ?string $id, protected ?string $name)
+    /**
+     * @param string|null $id
+     * @param string|null $name
+     * @param array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider> $tagProviders
+     */
+    public function __construct(
+        protected ?string $id,
+        protected ?string $name,
+        array $tagProviders,
+    )
     {
         $this->id ??= app(IdGenerator::class)->spanId();
+
+        $this->tags = collect($tagProviders)
+            ->map(fn(string $tagProvider) => app($tagProvider))
+            ->flatMap(fn(TagProvider $tagProvider) => $tagProvider->tags())
+            ->toArray();
     }
 
     public function id(): string
@@ -29,5 +48,10 @@ class Trace
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getTags(): array
+    {
+        return $this->tags ?? [];
     }
 }

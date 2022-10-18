@@ -3,6 +3,8 @@
 namespace Spatie\OpenTelemetry\Tests\TestSupport;
 
 use Orchestra\Testbench\TestCase as Orchestra;
+use Spatie\OpenTelemetry\Drivers\MemoryDriver;
+use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\StopWatch;
@@ -11,6 +13,8 @@ use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeStopWatch;
 
 class TestCase extends Orchestra
 {
+    protected MemoryDriver $memoryDriver;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -20,6 +24,10 @@ class TestCase extends Orchestra
 
         $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
         $this->app->bind(StopWatch::class, config('open-telemetry.stop_watch'));
+
+        $this->memoryDriver = new MemoryDriver();
+
+        Measure::setDriver($this->memoryDriver);
 
         FakeIdGenerator::reset();
     }
@@ -39,5 +47,10 @@ class TestCase extends Orchestra
         $migration = include __DIR__.'/../database/migrations/create_laravel-open-telemetry_table.php.stub';
         $migration->up();
         */
+    }
+
+    public function sentRequestPayloads(): array
+    {
+        return $this->memoryDriver->allPayloads();
     }
 }

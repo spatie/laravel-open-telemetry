@@ -9,6 +9,14 @@ return [
         ],
     ],
 
+    'trace_tag_providers' => [
+        \Spatie\OpenTelemetry\Support\TagProviders\DefaultTagsProvider::class,
+    ],
+
+    'span_tag_providers' => [
+
+    ],
+
     'stop_watch' => Spatie\OpenTelemetry\Support\StopWatch::class,
 
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
