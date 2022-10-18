@@ -6,7 +6,7 @@ use Spatie\OpenTelemetry\Support\TagProviders\TagProvider;
 
 class Trace
 {
-    /** @var array<string, mixed>  */
+    /** @var array<string, mixed> */
     protected array $tags = [];
 
     public static function start(string $id = null, string $name = ''): self
@@ -15,21 +15,20 @@ class Trace
     }
 
     /**
-     * @param string|null $id
-     * @param string|null $name
-     * @param array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider> $tagProviders
+     * @param  string|null  $id
+     * @param  string|null  $name
+     * @param  array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider>  $tagProviders
      */
     public function __construct(
         protected ?string $id,
         protected ?string $name,
         array $tagProviders,
-    )
-    {
+    ) {
         $this->id ??= app(IdGenerator::class)->spanId();
 
         $this->tags = collect($tagProviders)
-            ->map(fn(string $tagProvider) => app($tagProvider))
-            ->flatMap(fn(TagProvider $tagProvider) => $tagProvider->tags())
+            ->map(fn (string $tagProvider) => app($tagProvider))
+            ->flatMap(fn (TagProvider $tagProvider) => $tagProvider->tags())
             ->toArray();
     }
 
