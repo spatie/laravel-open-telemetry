@@ -36,6 +36,6 @@ return [
     ],
 
     'actions' => [
-        'make_queue_trace_aware' => Spatie\OpenTelemetry\Actions\MakeQueueTraceAwareAction::class
-    ]
+        'make_queue_trace_aware' => Spatie\OpenTelemetry\Actions\MakeQueueTraceAwareAction::class,
+    ],
 ];
