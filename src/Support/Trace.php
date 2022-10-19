@@ -33,6 +33,11 @@ class Trace
             ->toArray();
     }
 
+    public function setId(string $traceId)
+    {
+        $this->id = $traceId;
+    }
+
     public function id(): string
     {
         return $this->id;
@@ -54,4 +59,6 @@ class Trace
     {
         return $this->tags ?? [];
     }
+
+
 }

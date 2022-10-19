@@ -29,6 +29,11 @@ class Measure
         return $this;
     }
 
+    public function trace(): ?string
+    {
+        return $this->trace?->id();
+    }
+
     public function start(string $name): Span
     {
         $span = new Span(

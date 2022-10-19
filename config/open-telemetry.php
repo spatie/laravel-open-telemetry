@@ -20,4 +20,22 @@ return [
     'stop_watch' => Spatie\OpenTelemetry\Support\StopWatch::class,
 
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
+
+    'queue' => [
+        'make_queue_trace_aware' => true,
+
+        'all_jobs_are_trace_aware_by_default' => true,
+
+        'trace_aware_jobs' => [
+
+        ],
+
+        'not_trace_aware_jobs' => [
+
+        ],
+    ],
+
+    'actions' => [
+        'make_queue_trace_aware' => Spatie\OpenTelemetry\Actions\MakeQueueTraceAwareAction::class
+    ]
 ];
