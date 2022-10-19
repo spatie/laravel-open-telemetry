@@ -58,6 +58,4 @@ class Trace
     {
         return $this->tags ?? [];
     }
-
-
 }
