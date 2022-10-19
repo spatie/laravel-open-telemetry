@@ -11,7 +11,7 @@ use Spatie\OpenTelemetry\Jobs\TraceAware;
 
 class MakeQueueTraceAwareAction
 {
-    public function execute()
+    public function execute(): void
     {
         $this
             ->listenForJobsBeingQueued()
@@ -24,7 +24,7 @@ class MakeQueueTraceAwareAction
         app('queue')->createPayloadUsing(function ($connectionName, $queue, $payload) {
             $queueable = $payload['data']['command'];
 
-            if (! $this->isQueueAware($queueable)) {
+            if (! $this->isTraceAware($queueable)) {
                 return [];
             }
 
@@ -66,7 +66,7 @@ class MakeQueueTraceAwareAction
         return $this;
     }
 
-    protected function isQueueAware(object $queueable): bool
+    protected function isTraceAware(object $queueable): bool
     {
         $reflection = new ReflectionClass($queueable);
 
