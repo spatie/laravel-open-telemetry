@@ -16,25 +16,24 @@ class Span
     protected array $tags;
 
     /**
-     * @param string $name
-     * @param \Spatie\OpenTelemetry\Support\Trace $trace
-     * @param array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider> $tagProviders
-     * @param \Spatie\OpenTelemetry\Support\Span|null $parentSpan
+     * @param  string  $name
+     * @param  \Spatie\OpenTelemetry\Support\Trace  $trace
+     * @param  array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider>  $tagProviders
+     * @param  \Spatie\OpenTelemetry\Support\Span|null  $parentSpan
      */
     public function __construct(
         protected string $name,
-        protected Trace  $trace,
-        protected array  $tagProviders,
-        protected ?Span  $parentSpan = null,
-    )
-    {
+        protected Trace $trace,
+        protected array $tagProviders,
+        protected ?Span $parentSpan = null,
+    ) {
         $this->stopWatch = app(StopWatch::class)->start();
 
         $this->id ??= app(IdGenerator::class)->spanId();
 
         $this->tags = collect($this->tagProviders)
-            ->map(fn(string $tagProvider) => app($tagProvider))
-            ->flatMap(fn(TagProvider $tagProvider) => $tagProvider->tags())
+            ->map(fn (string $tagProvider) => app($tagProvider))
+            ->flatMap(fn (TagProvider $tagProvider) => $tagProvider->tags())
             ->toArray();
     }
 
