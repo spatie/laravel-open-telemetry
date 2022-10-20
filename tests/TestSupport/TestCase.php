@@ -39,14 +39,9 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function tempFile(string $fileName): string
     {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-open-telemetry_table.php.stub';
-        $migration->up();
-        */
+        return __DIR__ . "/temp/{$fileName}";
     }
 
     public function sentRequestPayloads(): array
