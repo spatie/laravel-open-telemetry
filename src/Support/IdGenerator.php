@@ -9,6 +9,7 @@ class IdGenerator
     public function traceId(): string
     {
         ray('random trace id used')->purple();
+
         return (new RandomIdGenerator())->generateTraceId();
     }
 

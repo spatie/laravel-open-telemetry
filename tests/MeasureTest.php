@@ -10,8 +10,6 @@ beforeEach(function () {
     TestTime::freeze('Y-m-d H:i:s', '2022-01-01 00:00:00');
 
     Http::fake();
-
-
 });
 
 it('can measure a single span', function () {
