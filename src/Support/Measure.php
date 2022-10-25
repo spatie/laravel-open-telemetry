@@ -22,6 +22,26 @@ class Measure
         $this->driver = $driver;
     }
 
+    public function traceId(): ?string
+    {
+        if (! $this->trace) {
+            return null;
+        }
+
+        return $this->trace->id();
+    }
+
+    public function setTraceId(string $traceId)
+    {
+        if (! $this->trace) {
+            return $this;
+        }
+
+        $this->trace->setId($traceId);
+
+        return $this;
+    }
+
     public function setDriver(Driver $driver): self
     {
         $this->driver = $driver;
