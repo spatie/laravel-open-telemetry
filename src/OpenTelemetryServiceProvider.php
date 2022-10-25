@@ -4,7 +4,6 @@ namespace Spatie\OpenTelemetry;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\OpenTelemetry\Commands\OpenTelemetryCommand;
 use Spatie\OpenTelemetry\Drivers\Driver;
 use Spatie\OpenTelemetry\Drivers\Multidriver;
 use Spatie\OpenTelemetry\Support\IdGenerator;
