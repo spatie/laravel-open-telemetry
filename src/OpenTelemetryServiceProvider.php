@@ -37,7 +37,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
         if (config('open-telemetry.queue.make_queue_trace_aware')) {
             /** @var \Spatie\OpenTelemetry\Actions\MakeQueueTraceAwareAction $action */
             $action = app(config('open-telemetry.actions.make_queue_trace_aware'));
-            
+
             $action->execute();
         }
     }
