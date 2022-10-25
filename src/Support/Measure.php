@@ -29,7 +29,6 @@ class Measure
         $this->trace = Trace::start(name: $traceName);
 
         return $this;
-
     }
 
     public function traceId(): ?string
