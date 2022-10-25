@@ -27,7 +27,6 @@ class Measure
         $this->trace = Trace::start(name: config('open-telemetry.default_trace_name'));
 
         return $this;
-
     }
 
     public function traceId(): ?string
