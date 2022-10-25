@@ -24,7 +24,7 @@ class Trace
         protected ?string $name,
         array $tagProviders,
     ) {
-        $this->id ??= app(IdGenerator::class)->spanId();
+        $this->id ??= app(IdGenerator::class)->traceId();
 
         $this->tags = collect($tagProviders)
             ->map(fn (string $tagProvider) => app($tagProvider))
