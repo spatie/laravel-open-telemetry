@@ -3,8 +3,10 @@
 return [
     /*
      * This value will be sent along with your trace.
+     *
+     * When set to `null`, the app name will be used
      */
-    'default_trace_name' => 'My package',
+    'default_trace_name' => null,
 
     /*
      * A driver is responsible for transmitting any measurements.

@@ -33,16 +33,11 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
             return new Measure($configuredMultiDriver);
         });
-    }
-
-    public function registeringPackage()
-    {
-        parent::registeringPackage();
 
         if (config('open-telemetry.queue.make_queue_trace_aware')) {
             /** @var \Spatie\OpenTelemetry\Actions\MakeQueueTraceAwareAction $action */
             $action = app(config('open-telemetry.actions.make_queue_trace_aware'));
-
+            
             $action->execute();
         }
     }

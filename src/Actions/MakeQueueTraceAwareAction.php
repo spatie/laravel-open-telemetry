@@ -28,7 +28,7 @@ class MakeQueueTraceAwareAction
                 return [];
             }
 
-            $currentTraceId = Measure::trace()?->id;
+            $currentTraceId = Measure::traceId();
 
             if ($currentTraceId) {
                 return ['traceId' => $currentTraceId];
@@ -49,6 +49,8 @@ class MakeQueueTraceAwareAction
 
             Measure::trace()?->setId($traceId);
         });
+
+        return $this;
     }
 
     protected function listenForJobsRetryRequested(): self

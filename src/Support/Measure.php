@@ -24,7 +24,9 @@ class Measure
 
     public function startTrace(): self
     {
-        $this->trace = Trace::start(name: config('open-telemetry.default_trace_name'));
+        $traceName = config('open-telemetry.default_trace_name') ?? config('app.name');
+
+        $this->trace = Trace::start(name: $traceName);
 
         return $this;
 
@@ -57,9 +59,9 @@ class Measure
         return $this;
     }
 
-    public function trace(): ?string
+    public function trace(): ?Trace
     {
-        return $this->trace?->id();
+        return $this->trace;
     }
 
     public function start(string $name): Span
