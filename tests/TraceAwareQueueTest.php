@@ -23,6 +23,3 @@ it('will inject the active trace id in the payload of a job', function () {
 
     expect($activeTraceIdInJob)->toBe('originalTraceId');
 });
-
-it('will set the trace id to the one in the payload of a job', function () {
-});
