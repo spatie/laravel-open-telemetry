@@ -10,7 +10,7 @@ class FakeSpanTagProvider implements TagProvider
     public function tags(): array
     {
         return [
-            'my-tag' => Str::random(),
+            'my-span-tag' => Str::random(),
         ];
     }
 }
