@@ -5,11 +5,11 @@ use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\TestJob;
 use Spatie\Valuestore\Valuestore;
 
-beforeEach(function() {
+beforeEach(function () {
     $this->valuestore = Valuestore::make($this->tempFile('traceAware.json'))->flush();
 });
 
-it('will inject the active trace id in the payload of a job', function() {
+it('will inject the active trace id in the payload of a job', function () {
     Measure::setTraceId('originalTraceId');
 
     $job = new TestJob($this->valuestore);
@@ -24,6 +24,5 @@ it('will inject the active trace id in the payload of a job', function() {
     expect($activeTraceIdInJob)->toBe('originalTraceId');
 });
 
-it('will set the trace id to the one in the payload of a job', function() {
-
+it('will set the trace id to the one in the payload of a job', function () {
 });
