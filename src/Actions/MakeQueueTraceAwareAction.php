@@ -63,7 +63,6 @@ class MakeQueueTraceAwareAction
 
     public function listenForProcessedJobs(): self
     {
-
         app('events')->listen(JobProcessed::class, function (JobProcessed $event) {
 
             if (!config('open-telemetry.queue.all_jobs_auto_start_a_span')) {

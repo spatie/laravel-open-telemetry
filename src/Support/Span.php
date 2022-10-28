@@ -54,7 +54,14 @@ class Span
         return $this;
     }
 
-    public function tags(): array
+    public function tags(array $tags): self
+    {
+        $this->tags = array_merge($this->tags, $tags);
+
+        return $this;
+    }
+
+    public function getTags(): array
     {
         return array_merge(
             $this->trace->getTags(),
@@ -73,7 +80,7 @@ class Span
             'name' => $this->name,
             'timestamp' => intdiv($this->stopWatch->startTime(), 1000),
             'duration' => $this->stopWatch->elapsedTime(),
-            'tags' => $this->tags(),
+            'tags' => $this->getTags(),
             'parentId' => $this->parentSpan?->id(),
             'otel.scope.name' => $this->trace->getName(),
         ];
