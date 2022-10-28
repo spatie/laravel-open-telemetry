@@ -2,6 +2,7 @@
 
 namespace Spatie\OpenTelemetry\Actions;
 
+use Illuminate\Contracts\Queue\Job;
 use Illuminate\Queue\Events\JobProcessed;
 use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Queue\Events\JobRetryRequested;
@@ -9,8 +10,6 @@ use ReflectionClass;
 use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\Jobs\NotTraceAware;
 use Spatie\OpenTelemetry\Jobs\TraceAware;
-use Spatie\OpenTelemetry\Support\Span;
-use Illuminate\Contracts\Queue\Job;
 
 class MakeQueueTraceAwareAction
 {
@@ -28,7 +27,7 @@ class MakeQueueTraceAwareAction
         app('queue')->createPayloadUsing(function ($connectionName, $queue, $payload) {
             $queueable = $payload['data']['command'];
 
-            if (!$this->isTraceAware($queueable)) {
+            if (! $this->isTraceAware($queueable)) {
                 return [];
             }
 
@@ -45,7 +44,7 @@ class MakeQueueTraceAwareAction
     protected function listenForJobsBeingProcessed(): self
     {
         app('events')->listen(JobProcessing::class, function (JobProcessing $event) {
-            if (!array_key_exists('traceId', $event->job->payload())) {
+            if (! array_key_exists('traceId', $event->job->payload())) {
                 return;
             }
 
@@ -63,11 +62,8 @@ class MakeQueueTraceAwareAction
 
     public function listenForProcessedJobs(): self
     {
-
         app('events')->listen(JobProcessed::class, function (JobProcessed $event) {
-
-            if (!config('open-telemetry.queue.all_jobs_auto_start_a_span')) {
-
+            if (! config('open-telemetry.queue.all_jobs_auto_start_a_span')) {
                 return;
             }
 
@@ -82,7 +78,7 @@ class MakeQueueTraceAwareAction
     protected function listenForJobsRetryRequested(): self
     {
         app('events')->listen(JobRetryRequested::class, function (JobRetryRequested $event) {
-            if (!array_key_exists('traceId', $event->payload())) {
+            if (! array_key_exists('traceId', $event->payload())) {
                 return;
             }
 
