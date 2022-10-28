@@ -48,6 +48,12 @@ return [
         'all_jobs_are_trace_aware_by_default' => true,
 
         /*
+         *  When set to `true` all jobs will
+         *  automatically start a span.
+         */
+        'all_jobs_auto_start_a_span' => true,
+
+        /*
          * The jobs we be trace aware even if these don't
          * implement the TraceAware interface.
          */

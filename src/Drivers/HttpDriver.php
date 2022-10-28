@@ -13,7 +13,9 @@ class HttpDriver implements Driver
     {
         $payload = [$span->toArray()];
 
-        Http::asJson()->post($this->options['url'], $payload);
+        $response = Http::asJson()->post($this->options['url'], $payload);
+
+        ray($response->status())->purple();
     }
 
     public function configure(array $options): Driver

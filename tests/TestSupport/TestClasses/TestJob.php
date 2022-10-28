@@ -22,5 +22,6 @@ class TestJob implements ShouldQueue
     {
         $this->valuestore->put('traceIdInPayload', $this->job->payload()['traceId'] ?? null);
         $this->valuestore->put('activeTraceIdInJob', Measure::traceId());
+        $this->valuestore->put('startedSpansInJob', Measure::startedSpanNames());
     }
 }

@@ -23,3 +23,16 @@ it('will inject the active trace id in the payload of a job', function () {
 
     expect($activeTraceIdInJob)->toBe('originalTraceId');
 });
+
+it('will auto start span for a job', function () {
+    Measure::setTraceId('originalTraceId');
+
+    $job = new TestJob($this->valuestore);
+    app(Dispatcher::class)->dispatch($job);
+
+    $this->artisan('queue:work --once')->assertExitCode(0);
+
+    $startedSpanNames = $this->valuestore->get('startedSpansInJob');
+
+    expect($startedSpanNames)->toBe([TestJob::class]);
+});

@@ -79,6 +79,16 @@ class Measure
         return $span;
     }
 
+    public function getSpan(string $name): ?Span
+    {
+        return $this->startedSpans[$name] ?? null;
+    }
+
+    public function startedSpanNames(): array
+    {
+        return array_keys($this->startedSpans);
+    }
+
     public function stop(string $name): ?Span
     {
         $span = $this->startedSpans[$name] ?? null;
