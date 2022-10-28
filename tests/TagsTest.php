@@ -42,7 +42,7 @@ it('can add extra tags on the span level', function () {
     expect($payloads[0]['tags']['my-span-tag'])->not()->toEqual($payloads[1]['tags']['my-span-tag']);
 });
 
-it('can add tags on a span', function() {
+it('can add tags on a span', function () {
     Measure::startTrace();
 
     Measure::start('first')->tags(['extra-name' => 'extra-value']);
