@@ -2,7 +2,6 @@
 
 namespace Spatie\OpenTelemetry;
 
-use Prometheus\Sample;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Drivers\Driver;

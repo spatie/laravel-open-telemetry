@@ -12,7 +12,8 @@ class Lottery
     public function __construct(
         protected int $chances,
         protected int $outOf,
-    ) {}
+    ) {
+    }
 
     public function choose(): bool
     {
