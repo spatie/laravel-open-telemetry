@@ -29,7 +29,6 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
         $this->app->singleton(Measure::class, function () {
             $shouldSample = app(Sampler::class)->shouldSample();
-
             $configuredMultiDriver = $this->getMultiDriver();
 
             return new Measure($configuredMultiDriver, $shouldSample);

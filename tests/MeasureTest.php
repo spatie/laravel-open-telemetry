@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Http;
 use Spatie\OpenTelemetry\Facades\Measure;
+use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
+use Spatie\OpenTelemetry\Support\Samplers\NeverSampler;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 use Spatie\TestTime\TestTime;
@@ -62,4 +64,18 @@ it('can measure nested spans', function () {
     $payloads = $this->sentRequestPayloads();
 
     assertMatchesSnapshot($payloads);
+});
+
+it('will not send any payloads when we are not sampling', function() {
+     config()->set('open-telemetry.sampler', NeverSampler::class);
+
+     $this->rebindClasses();
+
+     Measure::start('my-measure');
+
+     Measure::stop('my-measure');
+
+    $payloads = $this->sentRequestPayloads();
+
+    expect($payloads['sentSpans'])->toHaveCount(0);
 });

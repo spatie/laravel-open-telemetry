@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Contracts\Bus\Dispatcher;
+use Illuminate\Support\Facades\Http;
 use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\TestJob;
 use Spatie\Valuestore\Valuestore;
 
 beforeEach(function () {
+    Http::fake();
+
     $this->valuestore = Valuestore::make($this->tempFile('traceAware.json'))->flush();
 });
 
