@@ -2,14 +2,12 @@
 
 namespace Spatie\OpenTelemetry\Tests\TestSupport;
 
-use Illuminate\Support\Facades\Http;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\OpenTelemetry\Drivers\MemoryDriver;
 use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Samplers\AlwaysSampler;
-use Spatie\OpenTelemetry\Support\Samplers\NeverSampler;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
 use Spatie\OpenTelemetry\Support\StopWatch;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
