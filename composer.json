@@ -1,6 +1,6 @@
 {
     "name": "spatie/laravel-open-telemetry",
-    "description": "Use Open Telemetry in your Laravel app",
+    "description": "Measure performance across jobs and services",
     "keywords": [
         "spatie",
         "laravel",

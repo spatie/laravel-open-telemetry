@@ -1,5 +1,25 @@
-<?php
+---
+title: Installation & setup
+weight: 4
+---
 
+You can install the package via composer:
+
+```bash
+composer require spatie/laravel-open-telemetry
+```
+
+## Publish the configuration
+
+Next, you should publish the configuration using this command
+
+```bash
+php artisan vendor:publish --tag=open-telemetry-config
+```
+
+This is how the config file that will be saved in `config/open-telemetry.php` looks like:
+
+```php
 return [
     /*
      * This value will be sent along with your trace.
@@ -95,3 +115,5 @@ return [
      */
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
 ];
+```
+
