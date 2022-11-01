@@ -5,7 +5,13 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-open-telemetry/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/spatie/laravel-open-telemetry/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-open-telemetry.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-open-telemetry)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+**THIS PACKAGE IS IN DEVELOPMENT, DON'T USE IT IN PRODUCTION (YET)**
+
+Measuring performance and tracking bugs is typically done inside a single web request or job. But what if you want to see the performance or flow of a web request together with all the jobs it dispatched?
+
+Open Telemetry, or OTel for short, is a collection of tools, APIs and SDKs to collect information on how an entire system is behaving. A "system" can be a single application, or a group of applications (or queued jobs) that are working together.
+
+Using the laravel-open-telemetry package you can easily measure performance of a Laravel powered system. It can transmit the results to a tracing tool like [Jaeger](https://www.jaegertracing.io) or [Aspecto](https://www.aspecto.io).
 
 ## Support us
 
@@ -15,46 +21,9 @@ We invest a lot of resources into creating [best in class open source packages](
 
 We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
-## Installation
+## Documentation
 
-You can install the package via composer:
-
-```bash
-composer require spatie/laravel-open-telemetry
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-open-telemetry-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-open-telemetry-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-open-telemetry-views"
-```
-
-## Usage
-
-```php
-$openTelemetry = new Spatie\OpenTelemetry();
-echo $openTelemetry->echoPhrase('Hello, Spatie!');
-```
+All documentation is available [on our documentation site](https://spatie.be/docs/laravel-open-telemetry).
 
 ## Testing
 
