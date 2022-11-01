@@ -18,6 +18,12 @@ return [
     ],
 
     /*
+     * This class determines if your measurements should actually be sent
+     * to the reporting drivers.
+     */
+    'sampler' => Spatie\OpenTelemetry\Support\Samplers\LotterySampler::class,
+
+    /*
      * Tags can be added to any measurement. These classes will determine the
      * values of the tags when a new trace starts.
      */

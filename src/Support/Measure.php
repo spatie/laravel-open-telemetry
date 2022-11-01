@@ -15,15 +15,23 @@ class Measure
     /** @var array<string, \Spatie\OpenTelemetry\Support\Span> */
     protected array $startedSpans = [];
 
-    public function __construct(Driver $driver)
+    protected bool $shouldSample = true;
+
+    public function __construct(Driver $driver, bool $shouldSample = true)
     {
         $this->startTrace();
 
         $this->driver = $driver;
+
+        $this->shouldSample = $shouldSample;
     }
 
     public function startTrace(): self
     {
+        if (! $this->shouldSample) {
+            return $this;
+        }
+
         $traceName = config('open-telemetry.default_trace_name') ?? config('app.name');
 
         $this->trace = Trace::start(name: $traceName);
@@ -63,8 +71,12 @@ class Measure
         return $this->trace;
     }
 
-    public function start(string $name): Span
+    public function start(string $name): ?Span
     {
+        if (! $this->shouldSample) {
+            return null;
+        }
+
         $span = new Span(
             $name,
             $this->trace,
@@ -91,6 +103,10 @@ class Measure
 
     public function stop(string $name): ?Span
     {
+        if (! $this->shouldSample) {
+            return null;
+        }
+
         $span = $this->startedSpans[$name] ?? null;
 
         if (! $span) {

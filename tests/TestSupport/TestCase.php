@@ -7,6 +7,8 @@ use Spatie\OpenTelemetry\Drivers\MemoryDriver;
 use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
 use Spatie\OpenTelemetry\Support\IdGenerator;
+use Spatie\OpenTelemetry\Support\Samplers\AlwaysSampler;
+use Spatie\OpenTelemetry\Support\Samplers\Sampler;
 use Spatie\OpenTelemetry\Support\StopWatch;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeStopWatch;
@@ -24,6 +26,7 @@ class TestCase extends Orchestra
 
         $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
         $this->app->bind(StopWatch::class, config('open-telemetry.stop_watch'));
+        $this->app->bind(Sampler::class, AlwaysSampler::class);
 
         $this->memoryDriver = new MemoryDriver();
 
