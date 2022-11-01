@@ -27,7 +27,7 @@ Measure::stop('parent');
 
 Here's how that will look like in Jaeger:
 
-TODO: add image
+![screenshot](https://spatie.be/docs/laravel-open-telemetry/v1/images/trace.jpg)
 
 The real value of this package comes when also using it to measure an entire process the includes the web requests, one or more jobs / services.
 
@@ -43,6 +43,6 @@ The package will automatically measure any jobs. Any measurements in the job wil
 
 This is how it would look like in Jaeger:
 
-TODO: add image
+![screenshot](https://spatie.be/docs/laravel-open-telemetry/v1/images/trace-with-job.jpg)
 
 Jaeger and similar tools can calculate averages and display very interesting statistics around the measurements made. This will greatly help you understand how your application as a whole is performing.
