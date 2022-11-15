@@ -116,4 +116,3 @@ return [
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
 ];
 ```
-

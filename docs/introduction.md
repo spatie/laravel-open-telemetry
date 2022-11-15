@@ -3,8 +3,6 @@ title: Introduction
 weight: 1
 ---
 
-**THIS PACKAGE IS IN DEVELOPMENT, DON'T USE IT IN PRODUCTION (YET)**
-
 Measuring performance and tracking bugs is typically done inside a single web request or job. But what if you want to see the performance or flow of a web request together with all the jobs it dispatched?
 
 Open Telemetry, or OTel for short, is a collection of tools, APIs and SDKs to collect information on how an entire system is behaving. A "system" can be a single application, or a group of applications (or queued jobs) that are working together.
@@ -14,6 +12,8 @@ Using the laravel-open-telemetry package you can easily measure performance of a
 In your Laravel application, you can use start and stop measurements using the `Measure` facade. You can nest measurements how deep you like.
 
 ```php
+use Spatie\OpenTelemetry\Facades\Measure;
+
 Measure::start('parent');
 sleep(1);
 Measure::start('child');
@@ -46,3 +46,5 @@ This is how it would look like in Jaeger:
 ![screenshot](https://spatie.be/docs/laravel-open-telemetry/v1/images/trace-with-job.jpg)
 
 Jaeger and similar tools can calculate averages and display very interesting statistics around the measurements made. This will greatly help you understand how your application as a whole is performing.
+
+This package isn't a full implementation of everything Open Telemetry has to offer. It's goal is to provide the easiest way to work with traces and span in a Laravel app.
