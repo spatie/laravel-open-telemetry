@@ -1,6 +1,6 @@
 ---
 title: Continuing traces from other systems
-weight: 1
+weight: 2
 ---
 
 If your Laravel app is used in a bigger system, where one of the other apps started a trace, your Laravel app might get called by that other apps with [a `traceparent` header](https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html). This header contains the id of trace that was started.
