@@ -5,7 +5,7 @@ use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\Http\Middleware\ContinueTrace;
 
 beforeEach(function () {
-    Route::any('test-route', fn() => Measure::hasTraceId()
+    Route::any('test-route', fn () => Measure::hasTraceId()
         ? Measure::traceId()
         : 'did not start trace'
     )->middleware(ContinueTrace::class);

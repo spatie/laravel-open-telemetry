@@ -2,7 +2,7 @@
 
 use Spatie\OpenTelemetry\Support\ParsedTraceParentHeaderValue;
 
-it('can parse a correct header value', function() {
+it('can parse a correct header value', function () {
     $parsed = ParsedTraceParentHeaderValue::make('00-80e1afed08e019fc1110464cfa66635c-7a085853722dc6d2-01');
 
     expect($parsed)
@@ -13,7 +13,7 @@ it('can parse a correct header value', function() {
         ->flags->toBe('01');
 });
 
-it('will return null if the header is not valid', function(string $value) {
+it('will return null if the header is not valid', function (string $value) {
     $parsed = ParsedTraceParentHeaderValue::make($value);
 
     expect($parsed)->toBeNull();
