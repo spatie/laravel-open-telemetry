@@ -10,9 +10,11 @@ To have all measurements you take use that trace id from the header, you can use
 To use the `ContinueTrace` middleware, register it in your HTTP kernel.
 
 ```php
-namespace App\Http;
+namespace App\Http\Middleware;
 
-use Spatie\OpenTelemetry\Http\Middleware\ContinueTrace;class Kernel extends HttpKernel
+use Spatie\OpenTelemetry\Http\Middleware\ContinueTrace;
+
+class Kernel extends HttpKernel
 {
     protected $middleware = [
         ContinueTrace::class
