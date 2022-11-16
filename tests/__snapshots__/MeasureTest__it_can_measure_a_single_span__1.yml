@@ -1,2 +1,2 @@
 sentSpans:
-    - { id: '0', traceId: '0', localEndpoint: { serviceName: Laravel }, name: first, timestamp: 1640995, duration: 0, tags: { host.name: freeks-MacBook-Pro.local }, parentId: null, otel.scope.name: Laravel }
+    - { id: '0', traceId: '1', localEndpoint: { serviceName: Laravel }, name: first, timestamp: 1640995, duration: 0, tags: { host.name: freeks-MacBook-Pro.local }, parentId: null, otel.scope.name: Laravel }

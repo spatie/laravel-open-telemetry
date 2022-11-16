@@ -48,6 +48,17 @@ class Measure
         return $this->trace->id();
     }
 
+    public function hasTraceId(): bool
+    {
+        $traceId = $this->traceId();
+
+        if (is_null($traceId)) {
+            return false;
+        }
+
+        return $traceId !== '0';
+    }
+
     public function setTraceId(string $traceId)
     {
         if (! $this->trace) {
