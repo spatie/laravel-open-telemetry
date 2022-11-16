@@ -2,7 +2,6 @@
 
 namespace Spatie\OpenTelemetry\Support\Samplers;
 
-
 use Illuminate\Support\Lottery;
 
 class LotterySampler extends Sampler
