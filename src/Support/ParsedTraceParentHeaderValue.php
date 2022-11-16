@@ -25,7 +25,7 @@ class ParsedTraceParentHeaderValue
             return null;
         }
 
-        if (!SpanContext::isValidTraceFlag($flags)) {
+        if (! SpanContext::isValidTraceFlag($flags)) {
             return null;
         }
 
@@ -37,5 +37,6 @@ class ParsedTraceParentHeaderValue
         public string $traceId,
         public string $spanId,
         public string $flags,
-    ) {}
+    ) {
+    }
 }
