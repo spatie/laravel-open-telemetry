@@ -34,3 +34,13 @@ it('injects current span context name to Laravel HTTP (outgoing) requests', func
 
     Measure::stop('first');
 });
+
+it('wil not fall, if no spans present', function () {
+    Http::fake();
+
+    Http::withTrace()->post('http://example.com/first');
+
+    Http::assertSent(function (\Illuminate\Http\Client\Request $request) {
+        return true;
+    });
+});

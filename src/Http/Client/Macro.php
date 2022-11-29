@@ -9,9 +9,13 @@ class Macro
 {
     public static function apply() {
         PendingRequest::macro('withTrace', function () {
-            return PendingRequest::withHeaders([
-                'traceparent' => MeasureFacade::currentSpan()->toTraceContextID(),
-            ]);
+            $headers = [];
+
+            if ($traceContextID = MeasureFacade::currentSpan()?->toTraceContextID()) {
+                $headers['traceparent'] = $traceContextID;
+            }
+
+            return PendingRequest::withHeaders($headers);
         });
     }
 }
