@@ -1,7 +1,9 @@
 ---
-title: Continuing traces from other systems
+title: Continuing tracing with other systems
 weight: 2
 ---
+
+## From other system
 
 If your Laravel app is used in a bigger system, where one of the other apps started a trace, your Laravel app might get called by that other apps with [a `traceparent` header](https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html). This header contains the id of trace that was started.
 
@@ -24,4 +26,15 @@ class Kernel extends HttpKernel
 }
 ```
 
+## To other system
+
+In another case, if your Laravel app calls other systems, you can inject `traceparent` HTTP Header onto the outgoing request, by calling macro `withTrace` in HTTP Facade.
+
+It automatically adds current span context id to HTTP header for your outgoing request.
+
+```php
+use Http;
+
+Http::withTrace()->post('https://example.com')
+```
 

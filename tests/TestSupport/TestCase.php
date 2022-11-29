@@ -5,6 +5,7 @@ namespace Spatie\OpenTelemetry\Tests\TestSupport;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\OpenTelemetry\Drivers\MemoryDriver;
 use Spatie\OpenTelemetry\Facades\Measure;
+use Spatie\OpenTelemetry\Http\Client\Macro as HttpClientMacro;
 use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Samplers\AlwaysSampler;
@@ -31,6 +32,8 @@ class TestCase extends Orchestra
         $this->memoryDriver = new MemoryDriver();
 
         Measure::setDriver($this->memoryDriver);
+
+        HttpClientMacro::apply();
 
         FakeIdGenerator::reset();
     }

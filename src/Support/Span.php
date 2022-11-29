@@ -69,6 +69,17 @@ class Span
         );
     }
 
+    public function toTraceContextID(): string
+    {
+        return sprintf(
+            '%s-%s-%s-%s',
+            '00',         // version
+            $this->trace->id(),    // trace id
+            $this->id,             // span id
+            '01'                   // flags - https://www.w3.org/TR/trace-context/#trace-flags; 01 - Should be traced in next application
+        );
+    }
+
     public function toArray(): array
     {
         return [

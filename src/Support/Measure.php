@@ -107,6 +107,11 @@ class Measure
         return $this->startedSpans[$name] ?? null;
     }
 
+    public function currentSpan(): ?Span
+    {
+        return $this->parentSpan;
+    }
+
     public function startedSpanNames(): array
     {
         return array_keys($this->startedSpans);
