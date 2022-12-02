@@ -5,7 +5,7 @@ namespace Spatie\OpenTelemetry;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Drivers\Driver;
-use Spatie\OpenTelemetry\Drivers\Multidriver;
+use Spatie\OpenTelemetry\Drivers\MultiDriver;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Measure;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
@@ -41,9 +41,9 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
         }
     }
 
-    protected function getMultiDriver(): Multidriver
+    protected function getMultiDriver(): MultiDriver
     {
-        $multiDriver = new Multidriver();
+        $multiDriver = new MultiDriver();
 
         collect(config('open-telemetry.drivers'))
             ->map(function ($value, $key) {

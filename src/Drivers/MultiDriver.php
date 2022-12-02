@@ -4,7 +4,7 @@ namespace Spatie\OpenTelemetry\Drivers;
 
 use Spatie\OpenTelemetry\Support\Span;
 
-class Multidriver implements Driver
+class MultiDriver implements Driver
 {
     /** @var array<int, Driver> */
     protected array $drivers = [];
