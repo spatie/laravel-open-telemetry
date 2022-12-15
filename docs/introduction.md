@@ -36,7 +36,7 @@ Measure::start('my-web-request');
 
 Measure::stop('my-web-request');
 
-dispatch(new MyJob()); // let's image that this jobs has a `sleep(1)` in its `handle` method.
+dispatch(new MyJob()); // let's imagine that this jobs has a `sleep(1)` in its `handle` method.
 ```
 
 The package will automatically measure any jobs. Any measurements in the job will be associated with the web request that dispatch it.
