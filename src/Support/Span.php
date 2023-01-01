@@ -10,6 +10,8 @@ class Span
 
     protected string $id;
 
+    protected int $flags;
+
     /**
      * @var array<string, mixed>
      */
@@ -47,6 +49,23 @@ class Span
         return $this->parentSpan;
     }
 
+    public function trace(): ?Trace
+    {
+        return $this->trace;
+    }
+
+    public function flags(): int
+    {
+        /**
+         * TODO: flags MUST be propagated from Measure Lottery or Parent span when new span created.
+         *       By design, all spans, that have 0x00 flag (DEFAULT) - running lottery for trace
+         *       And all 0x01 flags (SPAN_TRACED) MUST be sampled, without any lottery,
+         *       If not, it will be an useless traces with "clear windows"
+         *
+         */
+        return 0x01;
+    }
+
     public function stop(): self
     {
         $this->stopWatch->stop();
@@ -66,17 +85,6 @@ class Span
         return array_merge(
             $this->trace->getTags(),
             $this->tags,
-        );
-    }
-
-    public function toTraceContextID(): string
-    {
-        return sprintf(
-            '%s-%s-%s-%s',
-            '00',         // version
-            $this->trace->id(),    // trace id
-            $this->id,             // span id
-            '01'                   // flags - https://www.w3.org/TR/trace-context/#trace-flags; 01 - Should be traced in next application
         );
     }
 

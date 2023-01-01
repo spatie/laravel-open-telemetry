@@ -4,6 +4,7 @@ namespace Spatie\OpenTelemetry\Http\Client;
 
 use Illuminate\Http\Client\PendingRequest;
 use Spatie\OpenTelemetry\Facades\Measure as MeasureFacade;
+use Spatie\OpenTelemetry\Support\Injectors\ArrayInjector;
 
 class Macro
 {
@@ -11,8 +12,8 @@ class Macro
         PendingRequest::macro('withTrace', function () {
             $headers = [];
 
-            if ($traceContextID = MeasureFacade::currentSpan()?->toTraceContextID()) {
-                $headers['traceparent'] = $traceContextID;
+            if ($span = MeasureFacade::currentSpan()) {
+                ArrayInjector::Inject($headers, $span);
             }
 
             return PendingRequest::withHeaders($headers);

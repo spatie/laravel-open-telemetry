@@ -38,3 +38,19 @@ use Http;
 Http::withTrace()->post('https://example.com')
 ```
 
+There has variants for header injection, with configuring config:
+
+```php
+/*
+ * Injectors configure, how span will be injected into other structures
+ */
+'injectors' => [
+    /*
+     * Array Injector often be used for configuration of outgoing http requests.
+     */
+    'array' => [
+        'key' => 'traceparent'
+    ]
+]
+```
+

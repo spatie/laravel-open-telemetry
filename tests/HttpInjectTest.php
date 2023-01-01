@@ -1,11 +1,15 @@
 <?php
 
 use Spatie\OpenTelemetry\Facades\Measure;
+use Spatie\OpenTelemetry\Support\Injectors\TextInjector;
 
 it('injects current span context name to Laravel HTTP (outgoing) requests', function () {
     Http::fake();
 
-    $parentSpanTraceContextID = Measure::start('parent')->toTraceContextID();
+    $parentSpan = Measure::start('parent');
+
+    $parentSpanTraceContextID = "";
+    TextInjector::Inject($parentSpanTraceContextID, $parentSpan);
 
     Http::withTrace()->post('http://example.com/first');
 
@@ -14,7 +18,9 @@ it('injects current span context name to Laravel HTTP (outgoing) requests', func
             ->hasHeader('traceparent', $parentSpanTraceContextID);
     });
 
-    $childSpanTraceContextID = Measure::start('second')->toTraceContextID();
+    $childSpan = Measure::start('second');
+    $childSpanTraceContextID = "";
+    TextInjector::Inject($childSpanTraceContextID, $childSpan);
 
     Http::withTrace()->post('http://example.com/second');
 

@@ -94,4 +94,16 @@ return [
      * This class generates ids for both traces and spans.
      */
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
+
+    /*
+     * Injectors configure, how span will be injected into other structures
+     */
+    'injectors' => [
+        /*
+         * Array Injector often be used for configuration of outgoing http requests.
+         */
+        'array' => [
+            'key' => 'traceparent'
+        ]
+    ]
 ];
