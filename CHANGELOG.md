@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.3 - 2022-12-02
+
+**Full Changelog**: https://github.com/spatie/laravel-open-telemetry/compare/0.0.2...0.0.3
+
 ## 0.0.2 - 2022-11-16
 
 - experimental release

@@ -44,9 +44,9 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
         HttpClientMacro::apply();
     }
 
-    protected function getMultiDriver(): Multidriver
+    protected function getMultiDriver(): MultiDriver
     {
-        $multiDriver = new Multidriver();
+        $multiDriver = new MultiDriver();
 
         collect(config('open-telemetry.drivers'))
             ->map(function ($value, $key) {
