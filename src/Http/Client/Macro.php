@@ -4,7 +4,7 @@ namespace Spatie\OpenTelemetry\Http\Client;
 
 use Illuminate\Http\Client\PendingRequest;
 use Spatie\OpenTelemetry\Facades\Measure as MeasureFacade;
-use Spatie\OpenTelemetry\Support\Injectors\ArrayInjector;
+use Spatie\OpenTelemetry\Support\Injectors\TextInjector;
 
 class Macro
 {
@@ -13,7 +13,9 @@ class Macro
             $headers = [];
 
             if ($span = MeasureFacade::currentSpan()) {
-                ArrayInjector::Inject($headers, $span);
+                $headers['traceparent'] = "";
+
+                TextInjector::Inject($headers['traceparent'], $span);
             }
 
             return PendingRequest::withHeaders($headers);
