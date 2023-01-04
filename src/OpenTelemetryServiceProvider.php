@@ -5,7 +5,8 @@ namespace Spatie\OpenTelemetry;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Drivers\Driver;
-use Spatie\OpenTelemetry\Drivers\MultiDriver;
+use Spatie\OpenTelemetry\Drivers\Multidriver;
+use Spatie\OpenTelemetry\Http\Client\Macro as HttpClientMacro;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Measure;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
@@ -39,6 +40,8 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
             $action->execute();
         }
+
+        HttpClientMacro::apply();
     }
 
     protected function getMultiDriver(): MultiDriver
