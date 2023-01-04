@@ -8,7 +8,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Drivers\Driver;
 use Spatie\OpenTelemetry\Drivers\Multidriver;
 use Spatie\OpenTelemetry\Support\IdGenerator;
-use Spatie\OpenTelemetry\Support\Injectors\TextInjector;
 use Spatie\OpenTelemetry\Support\Measure;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
 use Spatie\OpenTelemetry\Support\StopWatch;
