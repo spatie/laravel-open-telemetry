@@ -21,9 +21,9 @@ use Spatie\OpenTelemetry\Http\Middleware\ContinueTrace;
 class Kernel extends HttpKernel
 {
     protected $middleware = [
-        ContinueTrace::class
-        // ...
-
+        ContinueTrace::class,
+        
+        // other middleware
     ];
 }
 ```
@@ -35,6 +35,6 @@ If your Laravel app calls other system using Laravel's built-in `Http` client, y
 ```php
 use Illuminate\Support\Facades\Http;
 
-Http::withTrace()->post('https://example.com')
+Http::withTrace()->post('https://example.com');
 ```
 
