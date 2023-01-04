@@ -2,12 +2,13 @@
 
 namespace Spatie\OpenTelemetry;
 
+use Illuminate\Http\Client\PendingRequest;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Drivers\Driver;
 use Spatie\OpenTelemetry\Drivers\Multidriver;
-use Spatie\OpenTelemetry\Http\Client\Macro as HttpClientMacro;
 use Spatie\OpenTelemetry\Support\IdGenerator;
+use Spatie\OpenTelemetry\Support\Injectors\TextInjector;
 use Spatie\OpenTelemetry\Support\Measure;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
 use Spatie\OpenTelemetry\Support\StopWatch;
@@ -41,7 +42,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
             $action->execute();
         }
 
-        HttpClientMacro::apply();
+        $this->addWithTraceMacro();
     }
 
     protected function getMultiDriver(): MultiDriver
@@ -58,5 +59,26 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
             ->each(fn (Driver $driver) => $multiDriver->addDriver($driver));
 
         return $multiDriver;
+    }
+
+    protected function addWithTraceMacro(): self
+    {
+        PendingRequest::macro('withTrace', function () {
+            if ($span = app(Measure::class)->currentSpan()) {
+                $headers['traceparent'] = sprintf(
+                    '%s-%s-%s-%02x',
+                    '00',
+                    $span->trace()->id(),
+                    $span->id(),
+                    $span->flags(),
+                );
+
+                $this->withHeaders($headers);
+            }
+
+            return $this;
+        });
+
+        return $this;
     }
 }

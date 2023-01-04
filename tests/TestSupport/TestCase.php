@@ -33,8 +33,6 @@ class TestCase extends Orchestra
 
         Measure::setDriver($this->memoryDriver);
 
-        HttpClientMacro::apply();
-
         FakeIdGenerator::reset();
     }
 
