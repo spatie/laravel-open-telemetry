@@ -6,7 +6,7 @@ use Spatie\OpenTelemetry\Support\Span;
 
 class TextInjector
 {
-    static public function Inject(string &$data, Span $span): void
+    public static function Inject(string &$data, Span $span): void
     {
         $data = sprintf(
             '%s-%s-%s-%02x',

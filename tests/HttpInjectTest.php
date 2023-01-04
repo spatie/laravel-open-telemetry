@@ -8,23 +8,23 @@ it('injects current span context name to Laravel HTTP (outgoing) requests', func
 
     $parentSpan = Measure::start('parent');
 
-    $parentSpanTraceContextID = "";
+    $parentSpanTraceContextID = '';
     TextInjector::Inject($parentSpanTraceContextID, $parentSpan);
 
     Http::withTrace()->post('http://example.com/first');
 
-    Http::assertSent(function (\Illuminate\Http\Client\Request $request) use ($parentSpanTraceContextID) {
+    Http::assertSent(function (Illuminate\Http\Client\Request $request) use ($parentSpanTraceContextID) {
         return $request
             ->hasHeader('traceparent', $parentSpanTraceContextID);
     });
 
     $childSpan = Measure::start('second');
-    $childSpanTraceContextID = "";
+    $childSpanTraceContextID = '';
     TextInjector::Inject($childSpanTraceContextID, $childSpan);
 
     Http::withTrace()->post('http://example.com/second');
 
-    Http::assertSent(function (\Illuminate\Http\Client\Request $request) use ($childSpanTraceContextID) {
+    Http::assertSent(function (Illuminate\Http\Client\Request $request) use ($childSpanTraceContextID) {
         return $request
             ->hasHeader('traceparent', $childSpanTraceContextID);
     });
@@ -33,7 +33,7 @@ it('injects current span context name to Laravel HTTP (outgoing) requests', func
 
     Http::withTrace()->post('http://example.com/third');
 
-    Http::assertSent(function (\Illuminate\Http\Client\Request $request) use ($parentSpanTraceContextID) {
+    Http::assertSent(function (Illuminate\Http\Client\Request $request) use ($parentSpanTraceContextID) {
         return $request
             ->hasHeader('traceparent', $parentSpanTraceContextID);
     });
@@ -46,7 +46,7 @@ it('wil not fall, if no spans present', function () {
 
     Http::withTrace()->post('http://example.com/first');
 
-    Http::assertSent(function (\Illuminate\Http\Client\Request $request) {
+    Http::assertSent(function (Illuminate\Http\Client\Request $request) {
         return true;
     });
 });

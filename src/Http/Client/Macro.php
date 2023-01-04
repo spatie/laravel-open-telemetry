@@ -8,12 +8,13 @@ use Spatie\OpenTelemetry\Support\Injectors\TextInjector;
 
 class Macro
 {
-    public static function apply() {
+    public static function apply()
+    {
         PendingRequest::macro('withTrace', function () {
             $headers = [];
 
             if ($span = MeasureFacade::currentSpan()) {
-                $headers['traceparent'] = "";
+                $headers['traceparent'] = '';
 
                 TextInjector::Inject($headers['traceparent'], $span);
             }
