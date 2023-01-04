@@ -3,7 +3,7 @@ title: Continuing tracing with other systems
 weight: 2
 ---
 
-In open Telemetry a trace can start and stop on different systems. The package is able to handle this.
+Using open telemetry, a trace can start and stop on different systems. The package is able to handle this.
 
 ## Accepting a trace from another system to your Laravel app
 
