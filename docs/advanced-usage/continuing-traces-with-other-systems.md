@@ -30,7 +30,7 @@ class Kernel extends HttpKernel
 
 ## Sending trace information from your Laravel app to another system
 
-If your Laravel app calls other system using Laravel's built-in `Http` client, you can call the `withTrace` method. This will add a `traceparent` headers containing the trace and span ids.
+If your Laravel app calls other system using Laravel's built-in `Http` client, you can call the `withTrace` method. This will add a `traceparent` header containing the trace and span ids.
 
 ```php
 use Illuminate\Support\Facades\Http;

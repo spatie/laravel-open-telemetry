@@ -47,4 +47,4 @@ This is how it would look like in Jaeger:
 
 Jaeger and similar tools can calculate averages and display very interesting statistics around the measurements made. This will greatly help you understand how your application as a whole is performing.
 
-This package isn't a full implementation of everything Open Telemetry has to offer. It's goal is to provide the easiest way to work with traces and span in a Laravel app.
+This package isn't a full implementation of everything Open Telemetry has to offer. Its goal is to provide the easiest way to work with traces and span in a Laravel app.

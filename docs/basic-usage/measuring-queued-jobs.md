@@ -17,9 +17,7 @@ By default, all jobs will have the same trace id as the request (or parent job) 
 
 ### Automatically measure all jobs
 
-The package will also automatically start tags, so you can see all jobs in a trace in a tool like Jaeger, so you don't have to add an `Measure::start()` calls manually. If you don't want to start a tag in each job automatically, set the `queue.all_jobs_auto_start_a_span` config value to `false` in the `open-telemetry` config file. 
-
-### 
+The package will also automatically start tags, so you can see all jobs in a trace in a tool like Jaeger, so you don't have to add an `Measure::start()` calls manually. If you don't want to start a tag in each job automatically, set the `queue.all_jobs_auto_start_a_span` config value to `false` in the `open-telemetry` config file.
 
 If you don't want a job to be aware of the trace id of the request or parent job that dispatched the job, set the `queue.all_jobs_are_trace_aware_by_default` config value to `false` in the `open-telemetry` config file.  
 

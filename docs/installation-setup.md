@@ -116,3 +116,9 @@ return [
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
 ];
 ```
+
+## Setting up Jaeger via Docker locally
+
+This package transmits results to an OTel reporting tool lie [Jaeger](https://www.jaegertracing.io).
+
+The easiest way to set up Jaeger locally is by using the Docker composer file found in [this project on GitHub](https://github.com/prondubuisi/otel-php-laravel-basic-example).
