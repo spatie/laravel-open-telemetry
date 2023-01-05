@@ -88,7 +88,7 @@ return [
         ],
 
         /*
-         * These jobs will never trace aware, regardless of the `TraceAware` interface.
+         * These jobs will never trace aware, regardless of `all_jobs_are_trace_aware_by_default`.
          */
         'not_trace_aware_jobs' => [
 
