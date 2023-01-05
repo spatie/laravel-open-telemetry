@@ -12,9 +12,7 @@ class Span
 
     protected int $flags;
 
-    /**
-     * @var array<string, mixed>
-     */
+    /** @var array<string, mixed> */
     protected array $tags;
 
     /**
