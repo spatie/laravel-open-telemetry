@@ -41,11 +41,7 @@ class Measure
 
     public function traceId(): ?string
     {
-        if (! $this->trace) {
-            return null;
-        }
-
-        return $this->trace->id();
+        return $this->trace?->id();
     }
 
     public function hasTraceId(): bool
