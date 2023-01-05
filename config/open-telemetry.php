@@ -41,15 +41,15 @@ return [
 
     'queue' => [
         /*
-         * When enabled, any measurements you make in a queued job that implement
-         * TraceAware will belong to the same trace that was started in
-         * the process that dispatched the job.
+         * When enabled, any measurements (spans) you make in a queued job that implements
+         * `TraceAware` will automatically belong to the same trace that was
+         * started in the process that dispatched the job.
          */
         'make_queue_trace_aware' => true,
 
         /*
-         * When this is set to false, only jobs the implement
-         * TraceAware will be trace aware.
+         * When this is set to `false`, only jobs the implement
+         * `TraceAware` will be trace aware.
          */
         'all_jobs_are_trace_aware_by_default' => true,
 
@@ -60,15 +60,15 @@ return [
         'all_jobs_auto_start_a_span' => true,
 
         /*
-         * The jobs we be trace aware even if these don't
-         * implement the TraceAware interface.
+         * These jobs will be trace aware even if they don't
+         * implement the `TraceAware` interface.
          */
         'trace_aware_jobs' => [
 
         ],
 
         /*
-         * The jobs will never trace aware.
+         * These jobs will never trace aware, regardless of the `TraceAware` interface.
          */
         'not_trace_aware_jobs' => [
 
@@ -79,7 +79,7 @@ return [
      * These actions can be overridden to have fine-grained control over how
      * the package performs certain tasks.
      *
-     * In most cases, you should use the defaults.
+     * In most cases, you should use the default values.
      */
     'actions' => [
         'make_queue_trace_aware' => Spatie\OpenTelemetry\Actions\MakeQueueTraceAwareAction::class,
@@ -88,10 +88,10 @@ return [
     /*
      * This class determines how the package measures time.
      */
-    'stop_watch' => Spatie\OpenTelemetry\Support\StopWatch::class,
+    'stopwatch' => Spatie\OpenTelemetry\Support\Stopwatch::class,
 
     /*
-     * This class generates ids for both traces and spans.
+     * This class generates IDs for traces and spans.
      */
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
 ];

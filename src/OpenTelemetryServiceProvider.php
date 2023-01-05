@@ -10,7 +10,7 @@ use Spatie\OpenTelemetry\Drivers\Multidriver;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Measure;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
-use Spatie\OpenTelemetry\Support\StopWatch;
+use Spatie\OpenTelemetry\Support\Stopwatch;
 
 class OpenTelemetryServiceProvider extends PackageServiceProvider
 {
@@ -25,7 +25,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
     {
         $this->app->bind(Sampler::class, config('open-telemetry.sampler'));
         $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
-        $this->app->bind(StopWatch::class, config('open-telemetry.stop_watch'));
+        $this->app->bind(Stopwatch::class, config('open-telemetry.stopwatch'));
 
         $this->app->singleton(Measure::class, function () {
             $shouldSample = app(Sampler::class)->shouldSample();

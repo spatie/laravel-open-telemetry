@@ -6,7 +6,7 @@ use Spatie\OpenTelemetry\Support\TagProviders\TagProvider;
 
 class Span
 {
-    protected StopWatch $stopWatch;
+    protected Stopwatch $stopWatch;
 
     protected string $id;
 
@@ -29,7 +29,7 @@ class Span
         protected array $tagProviders,
         protected ?Span $parentSpan = null,
     ) {
-        $this->stopWatch = app(StopWatch::class)->start();
+        $this->stopWatch = app(Stopwatch::class)->start();
 
         $this->id ??= app(IdGenerator::class)->spanId();
 
