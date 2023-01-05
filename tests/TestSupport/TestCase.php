@@ -23,6 +23,7 @@ class TestCase extends Orchestra
 
         config()->set('open-telemetry.id_generator', FakeIdGenerator::class);
         config()->set('open-telemetry.stopwatch', FakeStopwatch::class);
+        config()->set('open-telemetry.trace_tag_providers', [\Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeTagsProvider::class]);
 
         $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
         $this->app->bind(Stopwatch::class, config('open-telemetry.stopwatch'));
