@@ -35,7 +35,6 @@ class TestCase extends Orchestra
         $this->memoryDriver = new MemoryDriver();
 
         Measure::setDriver($this->memoryDriver);
-
     }
 
     protected function getPackageProviders($app)
