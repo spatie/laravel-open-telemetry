@@ -72,8 +72,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
                     $span->flags(),
                 );
 
-
-                /** @var PendingRequest $this  */
+                /** @var PendingRequest $this */
                 $this->withHeaders($headers);
             }
 
