@@ -12,6 +12,7 @@ use Spatie\OpenTelemetry\Support\Samplers\Sampler;
 use Spatie\OpenTelemetry\Support\Stopwatch;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeStopwatch;
+use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeTagsProvider;
 
 class TestCase extends Orchestra
 {
@@ -21,9 +22,11 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
+        FakeIdGenerator::reset();
+
         config()->set('open-telemetry.id_generator', FakeIdGenerator::class);
         config()->set('open-telemetry.stopwatch', FakeStopwatch::class);
-        config()->set('open-telemetry.trace_tag_providers', [\Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeTagsProvider::class]);
+        config()->set('open-telemetry.trace_tag_providers', [FakeTagsProvider::class]);
 
         $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
         $this->app->bind(Stopwatch::class, config('open-telemetry.stopwatch'));
@@ -33,7 +36,6 @@ class TestCase extends Orchestra
 
         Measure::setDriver($this->memoryDriver);
 
-        FakeIdGenerator::reset();
     }
 
     protected function getPackageProviders($app)
