@@ -4,7 +4,7 @@ namespace Spatie\OpenTelemetry\Support;
 
 use Exception;
 
-class StopWatch
+class Stopwatch
 {
     protected int $referenceTime;
 

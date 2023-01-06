@@ -3,17 +3,13 @@
 namespace Spatie\OpenTelemetry\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\Support\ParsedTraceParentHeaderValue;
 
 class ContinueTrace
 {
-    /**
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         if (! $request->hasHeader('traceparent')) {
             $next($request);

@@ -3,15 +3,15 @@ title: Using samplers
 weight: 5
 ---
 
-By default, the package will start traces in every request that goes to your Laravel app. In production, you'll likely don't want this as it might hurt performance a little.
+By default, the package will start traces in every request handled by your Laravel app. In production, you'll likely don't want this as it might hurt performance a little.
 
-Instead of measure every request, you can measure only a small portion of requests using a sampler. A sampler is a class that determines which requests should be measured. By default, the package uses the `Spatie\OpenTelemetry\Support\Samplers\AlwaysSampler` samples. This can be configured in the `sampler` key of the `open-telemetry.php` config file.
+Instead of measuring every request, you can measure only a small portion of requests using a sampler. A sampler is a class that determines which requests should be measured. By default, the package uses the `Spatie\OpenTelemetry\Support\Samplers\AlwaysSampler` sampler. This can be configured using the `sampler` key of the `open-telemetry.php` config file.
 
-If you don't want to measure every request, you can use the `Spatie\OpenTelemetry\Support\Samplers\LotterySampler` that ships with the package. This sampler will measure performance for 2 out of 100 requests. To use this sampler, simply specify its class name the `sampler` key of the `open-telemetry.php` config file.
+If you don't want to measure every request, you can use the `Spatie\OpenTelemetry\Support\Samplers\LotterySampler` that ships with the package. This sampler will measure performance for roughly every 2 out of 100 requests. To use this sampler, simply specify its class name the `sampler` key of the `open-telemetry.php` config file.
 
 ## Creating your own sampler
 
-A sampler is any class that extends `Spatie\OpenTelemetry\Support\Samplers`. This abstract class requires you to implement a method `shouldSample` that should return a boolean. Here's an example where we create a `CustomLotterySampler` that will measure performance for 5 out of 1000 requests.
+A sampler is any class that extends `Spatie\OpenTelemetry\Support\Samplers`. This abstract class requires you to implement a method `shouldSample` that should return a boolean. Here's an example where we create a `CustomLotterySampler` that will measure performance for roughly every 5 out of 1000 requests.
 
 ```php
 namespace App\Support\Samplers;

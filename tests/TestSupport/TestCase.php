@@ -9,9 +9,9 @@ use Spatie\OpenTelemetry\OpenTelemetryServiceProvider;
 use Spatie\OpenTelemetry\Support\IdGenerator;
 use Spatie\OpenTelemetry\Support\Samplers\AlwaysSampler;
 use Spatie\OpenTelemetry\Support\Samplers\Sampler;
-use Spatie\OpenTelemetry\Support\StopWatch;
+use Spatie\OpenTelemetry\Support\Stopwatch;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
-use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeStopWatch;
+use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeStopwatch;
 
 class TestCase extends Orchestra
 {
@@ -22,10 +22,11 @@ class TestCase extends Orchestra
         parent::setUp();
 
         config()->set('open-telemetry.id_generator', FakeIdGenerator::class);
-        config()->set('open-telemetry.stop_watch', FakeStopWatch::class);
+        config()->set('open-telemetry.stopwatch', FakeStopwatch::class);
+        config()->set('open-telemetry.trace_tag_providers', [\Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeTagsProvider::class]);
 
         $this->app->bind(IdGenerator::class, config('open-telemetry.id_generator'));
-        $this->app->bind(StopWatch::class, config('open-telemetry.stop_watch'));
+        $this->app->bind(Stopwatch::class, config('open-telemetry.stopwatch'));
         $this->app->bind(Sampler::class, AlwaysSampler::class);
 
         $this->memoryDriver = new MemoryDriver();

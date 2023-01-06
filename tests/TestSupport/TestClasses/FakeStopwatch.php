@@ -3,9 +3,9 @@
 namespace Spatie\OpenTelemetry\Tests\TestSupport\TestClasses;
 
 use Carbon\Carbon;
-use Spatie\OpenTelemetry\Support\StopWatch;
+use Spatie\OpenTelemetry\Support\Stopwatch;
 
-class FakeStopWatch extends StopWatch
+class FakeStopwatch extends Stopwatch
 {
     public function start(): self
     {
