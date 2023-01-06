@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^9.0",
-        "illuminate/http": "^9.34",
+        "illuminate/http": "^9.46",
         "open-telemetry/api": "^0.0.15",
         "open-telemetry/opentelemetry": "^0.0.15",
         "open-telemetry/sdk": "^0.0.15",
