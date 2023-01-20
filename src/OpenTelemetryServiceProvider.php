@@ -3,6 +3,7 @@
 namespace Spatie\OpenTelemetry;
 
 use Illuminate\Http\Client\PendingRequest;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\OpenTelemetry\Drivers\Driver;
@@ -18,7 +19,13 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-open-telemetry')
-            ->hasConfigFile();
+            ->hasConfigFile()
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->copyAndRegisterServiceProviderInApp()
+                    ->askToStarRepoOnGitHub('spatie/laravel-open-telemetry');
+            });
     }
 
     public function bootingPackage()
@@ -42,6 +49,10 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
         }
 
         $this->addWithTraceMacro();
+
+        if (config('open-telemetry.automatically_trace_requests')) {
+            Measure::start('web-request');
+        }
     }
 
     protected function getMultiDriver(): MultiDriver

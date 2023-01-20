@@ -9,15 +9,15 @@ You can install the package via composer:
 composer require spatie/laravel-open-telemetry
 ```
 
-## Publish the configuration
+## Run the installer command
 
 Next, you should publish the configuration using this command
 
 ```bash
-php artisan vendor:publish --tag=open-telemetry-config
+php artisan open-telemetry:install
 ```
 
-This is how the config file that will be saved in `config/open-telemetry.php` looks like:
+This command will create a config file in `config/open-telemetry.php` looks like:
 
 ```php
 return [
@@ -116,6 +116,8 @@ return [
     'id_generator' => Spatie\OpenTelemetry\Support\IdGenerator::class,
 ];
 ```
+
+It will also copy a service provider to `app/Providers/OpenTelemetryServiceProvider`. This provider contains code to measure requests.
 
 ## Setting up Jaeger via Docker locally
 

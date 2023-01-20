@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Spatie\OpenTelemetry\Support\Measure;
+
+class OpenTelemetryServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this->traceRequests();
+    }
+
+    protected function traceRequests()
+    {
+        Measure::start('request');
+
+        $this->app->terminating(function() {
+           Measure::stop('request');
+        });
+    }
+}
