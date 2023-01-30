@@ -80,9 +80,9 @@ it('will not send any payloads when we are not sampling', function () {
     expect($payloads['sentSpans'])->toHaveCount(0);
 });
 
-it('can accept extra merge fields when starting a span that will be added to the sent span', function() {
+it('can accept extra merge fields when starting a span that will be added to the sent span', function () {
     Measure::start('my-measure', [
-        'extraName' => 'extraValue'
+        'extraName' => 'extraValue',
     ]);
 
     Measure::stop('my-measure');
@@ -92,9 +92,9 @@ it('can accept extra merge fields when starting a span that will be added to the
     expect(Arr::get($payloads, 'sentSpans.0.extraName'))->toBe('extraValue');
 });
 
-it('can accept extra merge fields when ending a span that will be merge to the sent span', function() {
+it('can accept extra merge fields when ending a span that will be merge to the sent span', function () {
     Measure::start('my-measure', [
-        'extraName' => 'extraValue'
+        'extraName' => 'extraValue',
     ]);
 
     Measure::stop('my-measure', [
@@ -106,6 +106,4 @@ it('can accept extra merge fields when ending a span that will be merge to the s
 
     expect(Arr::get($payloads, 'sentSpans.0.extraName'))->toBe('extraValueOverridden');
     expect(Arr::get($payloads, 'sentSpans.0.another'))->toBe('anotherValue');
-
-
 });

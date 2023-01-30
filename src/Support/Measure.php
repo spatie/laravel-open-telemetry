@@ -144,7 +144,7 @@ class Measure
 
         $mergeProperties = array_merge([
             'timestamp' => (int) ((microtime(true) * 1_000_000_000)),
-            'duration' => $durationInMs // TODO recalculate to otel standard
+            'duration' => $durationInMs, // TODO recalculate to otel standard
         ], $mergeProperties);
 
         $this->stop($name, $mergeProperties);

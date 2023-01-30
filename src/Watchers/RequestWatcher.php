@@ -11,7 +11,7 @@ class RequestWatcher extends Watcher
     {
         Measure::start('request'); //TODO start time mergen
 
-        $app->terminating(function() {
+        $app->terminating(function () {
             Measure::stop('request');
         });
     }
