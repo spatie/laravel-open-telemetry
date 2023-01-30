@@ -20,7 +20,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-open-telemetry')
             ->hasConfigFile()
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
                     ->copyAndRegisterServiceProviderInApp()
