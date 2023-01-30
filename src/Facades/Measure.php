@@ -5,7 +5,7 @@ namespace Spatie\OpenTelemetry\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @mixin \Spatie\OpenTelemetry\Facades\Measure
+ * @mixin \Spatie\OpenTelemetry\Support\Measure
  */
 class Measure extends Facade
 {

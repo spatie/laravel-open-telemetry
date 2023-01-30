@@ -3,21 +3,28 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\OpenTelemetry\Support\Measure;
+use Spatie\OpenTelemetry\Watchers\HttpClientWatcher;
+use Spatie\OpenTelemetry\Watchers\QueryWatcher;
+use Spatie\OpenTelemetry\Watchers\RequestWatcher;
+use Spatie\OpenTelemetry\Watchers\Watcher;
 
 class OpenTelemetryServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->traceRequests();
+        $this->registerWatchers();
     }
 
-    protected function traceRequests()
+    protected function registerWatchers(): self
     {
-        Measure::start('request');
+        collect([
+            HttpClientWatcher::class,
+            QueryWatcher::class,
+            RequestWatcher::class,
+        ])
+            ->map(fn(string $watcherClass) => app($watcherClass))
+            ->each(fn(Watcher $watcher) => $watcher->register(($this->app)));
 
-        $this->app->terminating(function() {
-           Measure::stop('request');
-        });
+        return $this;
     }
 }

@@ -78,7 +78,7 @@ class Measure
         return $this->trace;
     }
 
-    public function start(string $name): ?Span
+    public function start(string $name, array $mergeProperties = []): ?Span
     {
         if (! $this->shouldSample) {
             return null;
@@ -89,6 +89,7 @@ class Measure
             $this->trace,
             config('open-telemetry.span_tag_providers'),
             $this->parentSpan,
+            $mergeProperties,
         );
 
         $this->startedSpans[$name] = $span;
@@ -113,7 +114,7 @@ class Measure
         return array_keys($this->startedSpans);
     }
 
-    public function stop(string $name): ?Span
+    public function stop(string $name, array $mergeProperties = []): ?Span
     {
         if (! $this->shouldSample) {
             return null;
@@ -125,7 +126,7 @@ class Measure
             return null;
         }
 
-        $span->stop();
+        $span->stop($mergeProperties);
 
         unset($this->startedSpans[$name]);
         $this->parentSpan = $span->parentSpan();
@@ -133,5 +134,19 @@ class Measure
         $this->driver->sendSpan($span);
 
         return $span;
+    }
+
+    public function manual(string $name, float $durationInMs, array $mergeProperties = [])
+    {
+        $this->start($name);
+
+        $stopTime = now()->format('u');
+
+        $mergeProperties = array_merge([
+            'timestamp' => (int) ((microtime(true) * 1_000_000_000)),
+            'duration' => $durationInMs // TODO recalculate to otel standard
+        ], $mergeProperties);
+
+        $this->stop($name, $mergeProperties);
     }
 }

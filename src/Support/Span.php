@@ -15,6 +15,9 @@ class Span
     /** @var array<string, mixed> */
     protected array $tags;
 
+    /** @var array<string, mixed> */
+    public array $mergeProperties;
+
     /**
      * @param  string  $name
      * @param  \Spatie\OpenTelemetry\Support\Trace  $trace
@@ -26,6 +29,8 @@ class Span
         protected Trace $trace,
         protected array $tagProviders,
         protected ?Span $parentSpan = null,
+        array $mergeProperties = [],
+
     ) {
         $this->stopWatch = app(Stopwatch::class)->start();
 
@@ -35,6 +40,9 @@ class Span
             ->map(fn (string $tagProvider) => app($tagProvider))
             ->flatMap(fn (TagProvider $tagProvider) => $tagProvider->tags())
             ->toArray();
+
+        $this->mergeProperties = $mergeProperties;
+
     }
 
     public function id(): string
@@ -63,9 +71,11 @@ class Span
         return 0x01;
     }
 
-    public function stop(): self
+    public function stop(array $mergeProperties = []): self
     {
         $this->stopWatch->stop();
+
+        $this->mergeProperties = array_merge($this->mergeProperties, $mergeProperties);
 
         return $this;
     }
@@ -87,7 +97,7 @@ class Span
 
     public function toArray(): array
     {
-        return [
+        return array_merge([
             'id' => $this->id,
             'traceId' => $this->trace->id(),
             'localEndpoint' => [
@@ -99,6 +109,6 @@ class Span
             'tags' => $this->getTags(),
             'parentId' => $this->parentSpan?->id(),
             'otel.scope.name' => $this->trace->getName(),
-        ];
+        ], $this->mergeProperties);
     }
 }
