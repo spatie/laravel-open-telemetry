@@ -2,6 +2,7 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
+use Carbon\Carbon;
 use Exception;
 
 class Stopwatch
@@ -12,21 +13,17 @@ class Stopwatch
 
     protected ?int $stopTime = null;
 
-    public function __construct()
-    {
-        $this->referenceTime = (int) ((microtime(true) * 1_000_000_000) - hrtime(true));
-    }
 
     public function start(): self
     {
-        $this->startTime = $this->referenceTime + hrtime(true);
+        $this->startTime = now()->getPreciseTimestamp();
 
         return $this;
     }
 
     public function stop(): self
     {
-        $this->stopTime = $this->referenceTime + hrtime(true);
+        $this->stopTime = now()->getPreciseTimestamp();
 
         return $this;
     }
@@ -51,6 +48,6 @@ class Stopwatch
             throw new Exception('//TODO: add message');
         }
 
-        return ($this->stopTime - $this->startTime) / 1_000;
+        return $this->stopTime - $this->startTime;
     }
 }

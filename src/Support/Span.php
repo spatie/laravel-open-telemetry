@@ -104,7 +104,7 @@ class Span
                 'serviceName' => $this->trace->getName(),
             ],
             'name' => $this->name,
-            'timestamp' => intdiv($this->stopWatch->startTime(), 1000),
+            'timestamp' => $this->stopWatch->startTime(),
             'duration' => $this->stopWatch->elapsedTime(),
             'tags' => $this->getTags(),
             'parentId' => $this->parentSpan?->id(),

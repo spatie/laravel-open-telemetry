@@ -140,11 +140,15 @@ class Measure
     {
         $this->start($name);
 
-        $stopTime = now()->format('u');
+        $endTime = now()->getPreciseTimestamp();
+
+        $durationInMicroseconds = $durationInMs * 1000;
+
+        $startTime = $endTime - $durationInMicroseconds;
 
         $mergeProperties = array_merge([
-            'timestamp' => (int) ((microtime(true) * 1_000_000_000)),
-            'duration' => $durationInMs // TODO recalculate to otel standard
+            'timestamp' => $startTime,
+            'duration' => $durationInMicroseconds
         ], $mergeProperties);
 
         $this->stop($name, $mergeProperties);
