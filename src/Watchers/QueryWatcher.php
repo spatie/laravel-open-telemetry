@@ -15,7 +15,7 @@ class QueryWatcher extends Watcher
 
         DB::listen(function (QueryExecuted $query) {
             $queryTimeInMs = $query->time;
-            ray('query executed',$queryTimeInMs);
+            ray('query executed', $queryTimeInMs);
 
             Measure::manual('query', $queryTimeInMs);
         });
