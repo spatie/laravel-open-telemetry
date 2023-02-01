@@ -9,11 +9,10 @@ use Illuminate\Support\Facades\Event;
 
 class HttpClientWatcher extends Watcher
 {
-
     public function register(Application $app)
     {
         Event::listen(RequestSending::class, function (RequestSending $event) {
-           // to do implement
+            // to do implement
         });
 
         Event::listen(ResponseReceived::class, function (ResponseReceived $event) {

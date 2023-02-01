@@ -42,7 +42,6 @@ class Span
             ->toArray();
 
         $this->mergeProperties = $mergeProperties;
-
     }
 
     public function id(): string

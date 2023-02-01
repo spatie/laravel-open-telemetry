@@ -9,7 +9,6 @@ use Spatie\OpenTelemetry\Facades\Measure;
 
 class QueryWatcher extends Watcher
 {
-
     public function register(Application $app)
     {
         DB::listen(function (QueryExecuted $query) {
