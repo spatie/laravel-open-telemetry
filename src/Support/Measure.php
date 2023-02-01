@@ -148,7 +148,7 @@ class Measure
 
         $mergeProperties = array_merge([
             'timestamp' => $startTime,
-            'duration' => $durationInMicroseconds
+            'duration' => $durationInMicroseconds,
         ], $mergeProperties);
 
         $this->stop($name, $mergeProperties);

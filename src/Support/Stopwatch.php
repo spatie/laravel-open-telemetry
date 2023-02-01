@@ -2,7 +2,6 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
-use Carbon\Carbon;
 use Exception;
 
 class Stopwatch
@@ -12,7 +11,6 @@ class Stopwatch
     protected ?int $startTime = null;
 
     protected ?int $stopTime = null;
-
 
     public function start(): self
     {
