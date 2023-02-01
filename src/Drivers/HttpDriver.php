@@ -13,6 +13,7 @@ class HttpDriver implements Driver
     {
         $payload = [$span->toArray()];
 
+        ray($payload);
         Http::asJson()->post($this->options['url'], $payload);
     }
 

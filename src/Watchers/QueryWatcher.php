@@ -11,10 +11,13 @@ class QueryWatcher extends Watcher
 {
     public function register(Application $app)
     {
+        ray('registering query watcher');
+
         DB::listen(function (QueryExecuted $query) {
             $queryTimeInMs = $query->time;
+            ray('query executed',$queryTimeInMs);
 
-            Measure::manual('query', $queryTimeInMs); //TODO add query sql?
+            Measure::manual('query', $queryTimeInMs);
         });
     }
 }
