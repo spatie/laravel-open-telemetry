@@ -13,7 +13,7 @@ return [
      */
     'drivers' => [
         Spatie\OpenTelemetry\Drivers\HttpDriver::class => [
-            'url' => 'http://localhost:9412/api/v2/spans',
+            'url' => 'http://localhost:9411/api/v2/spans',
         ],
     ],
 

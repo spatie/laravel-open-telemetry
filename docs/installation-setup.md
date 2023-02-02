@@ -33,7 +33,7 @@ return [
      */
     'drivers' => [
         Spatie\OpenTelemetry\Drivers\HttpDriver::class => [
-            'url' => 'http://localhost:9412/api/v2/spans',
+            'url' => 'http://localhost:9411/api/v2/spans',
         ],
     ],
 
@@ -119,8 +119,14 @@ return [
 
 It will also copy a service provider to `app/Providers/OpenTelemetryServiceProvider`. This provider contains code to measure requests.
 
-## Setting up Jaeger via Docker locally
+## Setting up ZipKin via Docker locally
 
-This package transmits results to an OpenTelemetry reporting tool like [Jaeger](https://www.jaegertracing.io).
+This package transmits results to an OpenTelemetry reporting tool like [ZipKin](https://zipkin.io) or [Jaeger](https://www.jaegertracing.io).
 
-The easiest way to set up Jaeger locally is by using the Docker composer file found in [this project on GitHub](https://github.com/prondubuisi/otel-php-laravel-basic-example).
+The default configuration of this package, will send measurements to ZipKin. To install ZipKin, you can use the following docker command:
+
+```bash
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+
+The Zipkin UI will be visible at http://localhost:9411
