@@ -17,7 +17,13 @@ class QueryWatcher extends Watcher
             $queryTimeInMs = $query->time;
             ray('query executed',$queryTimeInMs);
 
-            Measure::manual('query', $queryTimeInMs);
+            Measure::manual('query', $queryTimeInMs, [
+                'attributes' => [
+                    'query' => $query->sql,
+                ],
+                'description' => $query->sql,
+                'otel.status.description' => 'query executed',
+            ]);
         });
     }
 }
