@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.5 - 2023-02-06
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/13
+- Update broken shields badges by @erikn69 in https://github.com/spatie/laravel-open-telemetry/pull/14
+
+### New Contributors
+
+- @erikn69 made their first contribution in https://github.com/spatie/laravel-open-telemetry/pull/14
+
+**Full Changelog**: https://github.com/spatie/laravel-open-telemetry/compare/0.0.4...0.0.5
+
 ## 0.0.4 - 2023-01-30
 
 ### What's Changed
