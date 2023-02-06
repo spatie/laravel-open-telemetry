@@ -1,3 +1,3 @@
 sentSpans:
-    - { id: '1', traceId: '0', localEndpoint: { serviceName: Laravel }, name: child, timestamp: 1640995, duration: 0, tags: { host.name: static.host.name.for.tests }, parentId: '0', otel.scope.name: Laravel }
-    - { id: '0', traceId: '0', localEndpoint: { serviceName: Laravel }, name: parent, timestamp: 1640995, duration: 0, tags: { host.name: static.host.name.for.tests }, parentId: null, otel.scope.name: Laravel }
+    - { id: '1', traceId: '0', localEndpoint: { serviceName: Laravel }, name: child, timestamp: 1640995201, duration: 1, tags: { host.name: static.host.name.for.tests }, parentId: '0', otel.scope.name: Laravel }
+    - { id: '0', traceId: '0', localEndpoint: { serviceName: Laravel }, name: parent, timestamp: 1640995200, duration: 3, tags: { host.name: static.host.name.for.tests }, parentId: null, otel.scope.name: Laravel }

@@ -61,12 +61,6 @@ class Span
 
     public function flags(): int
     {
-        /**
-         * TODO: flags MUST be propagated from Measure Lottery or Parent span when new span created.
-         *       By design, all spans, that have 0x00 flag (DEFAULT) - running lottery for trace
-         *       And all 0x01 flags (SPAN_TRACED) MUST be sampled, without any lottery,
-         *       If not, it will be an useless traces with "clear windows"
-         */
         return 0x01;
     }
 
