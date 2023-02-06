@@ -6,8 +6,6 @@ use Exception;
 
 class Stopwatch
 {
-    protected int $referenceTime;
-
     protected ?int $startTime = null;
 
     protected ?int $stopTime = null;

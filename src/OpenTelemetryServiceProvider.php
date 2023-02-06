@@ -51,7 +51,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
         $this->addWithTraceMacro();
 
         if (config('open-telemetry.automatically_trace_requests')) {
-            Measure::start('web-request');
+            Facades\Measure::start('web-request');
         }
     }
 
