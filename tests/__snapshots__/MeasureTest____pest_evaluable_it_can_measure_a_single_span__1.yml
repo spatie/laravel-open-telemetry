@@ -1,0 +1,2 @@
+sentSpans:
+    - { id: '0', traceId: '0', localEndpoint: { serviceName: Laravel }, name: first, timestamp: 1640995200, duration: 1, tags: { host.name: static.host.name.for.tests }, parentId: null, otel.scope.name: Laravel }
