@@ -15,8 +15,6 @@ class Trace
     }
 
     /**
-     * @param  string|null  $id
-     * @param  string|null  $name
      * @param  array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider>  $tagProviders
      */
     public function __construct(
