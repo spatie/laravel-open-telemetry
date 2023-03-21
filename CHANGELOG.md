@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.6 - 2023-03-21
+
+### What's Changed
+
+- Bump aglipanci/laravel-pint-action from 1.0.0 to 2.1.0 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/10
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/4
+- Bump aglipanci/laravel-pint-action from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/16
+
+**Full Changelog**: https://github.com/spatie/laravel-open-telemetry/compare/0.0.5...0.0.6
+
 ## 0.0.5 - 2023-02-06
 
 ### What's Changed
