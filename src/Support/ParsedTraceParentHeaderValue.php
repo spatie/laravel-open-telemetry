@@ -2,7 +2,9 @@
 
 namespace Spatie\OpenTelemetry\Support;
 
+use OpenTelemetry\API\Trace\Propagation\TraceContextValidator;
 use OpenTelemetry\API\Trace\SpanContext;
+use OpenTelemetry\API\Trace\SpanContextValidator;
 
 class ParsedTraceParentHeaderValue
 {
@@ -17,15 +19,15 @@ class ParsedTraceParentHeaderValue
             return null;
         }
 
-        if (! SpanContext::isValidTraceId($traceId)) {
+        if (! SpanContextValidator::isValidTraceId($traceId)) {
             return null;
         }
 
-        if (! SpanContext::isValidSpanId($spanId)) {
+        if (! SpanContextValidator::isValidSpanId($spanId)) {
             return null;
         }
 
-        if (! SpanContext::isValidTraceFlag($flags)) {
+        if (! TraceContextValidator::isValidTraceFlag($flags)) {
             return null;
         }
 

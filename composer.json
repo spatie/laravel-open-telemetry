@@ -19,10 +19,8 @@
         "php": "^8.1",
         "illuminate/contracts": "^10.0",
         "illuminate/http": "^10.0",
-        "open-telemetry/api": "^0.0.15",
-        "open-telemetry/opentelemetry": "^0.0.15",
-        "open-telemetry/sdk": "^0.0.15",
-        "open-telemetry/sdk-contrib": "^0.0.15",
+        "open-telemetry/api": "^1.0",
+        "open-telemetry/sdk": "^1.0",
         "php-http/guzzle7-adapter": "^1.0",
         "spatie/laravel-package-tools": "^1.13.8"
     },
