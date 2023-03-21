@@ -3,7 +3,6 @@
 namespace Spatie\OpenTelemetry\Support;
 
 use OpenTelemetry\API\Trace\Propagation\TraceContextValidator;
-use OpenTelemetry\API\Trace\SpanContext;
 use OpenTelemetry\API\Trace\SpanContextValidator;
 
 class ParsedTraceParentHeaderValue
