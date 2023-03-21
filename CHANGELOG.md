@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.7 - 2023-03-21
+
+- update deps
+
 ## 0.0.6 - 2023-03-21
 
 ### What's Changed
