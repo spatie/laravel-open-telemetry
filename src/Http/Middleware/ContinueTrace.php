@@ -12,7 +12,7 @@ class ContinueTrace
     public function handle(Request $request, Closure $next): mixed
     {
         if (! $request->hasHeader('traceparent')) {
-            $next($request);
+            return $next($request);
         }
 
         $headerValue = $request->header('traceparent');
