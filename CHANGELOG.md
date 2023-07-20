@@ -2,6 +2,24 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.8 - 2023-07-20
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/17
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.0 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/18
+- Bump dependabot/fetch-metadata from 1.5.0 to 1.5.1 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/19
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/23
+- Fix typo by @neemspees in https://github.com/spatie/laravel-open-telemetry/pull/24
+- Fix: Lost return keyword by @MilesChou in https://github.com/spatie/laravel-open-telemetry/pull/26
+
+### New Contributors
+
+- @neemspees made their first contribution in https://github.com/spatie/laravel-open-telemetry/pull/24
+- @MilesChou made their first contribution in https://github.com/spatie/laravel-open-telemetry/pull/26
+
+**Full Changelog**: https://github.com/spatie/laravel-open-telemetry/compare/0.0.7...0.0.8
+
 ## 0.0.7 - 2023-03-21
 
 - update deps
