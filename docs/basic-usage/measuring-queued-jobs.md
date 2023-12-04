@@ -20,7 +20,8 @@ If you want to make a particular job trace aware while that setting is set to fa
 ```php
 namespace App\Jobs;
 
-use Illuminate\Contracts\Queue\ShouldQueue;use Spatie\OpenTelemetry\Jobs\TraceAware;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Spatie\OpenTelemetry\Jobs\TraceAware;
 
 class MyJob implements ShouldQueue, TraceAware
 {
