@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Http;
 use Spatie\OpenTelemetry\Facades\Measure;
 use Spatie\OpenTelemetry\Support\Samplers\NeverSampler;
 use Spatie\OpenTelemetry\Tests\TestSupport\TestClasses\FakeIdGenerator;
-use function Spatie\Snapshots\assertMatchesSnapshot;
 use Spatie\TestTime\TestTime;
+
+use function Spatie\Snapshots\assertMatchesSnapshot;
 
 beforeEach(function () {
     TestTime::freeze('Y-m-d H:i:s', '2022-01-01 00:00:00');

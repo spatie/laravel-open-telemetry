@@ -19,9 +19,7 @@ class Span
     public array $mergeProperties;
 
     /**
-     * @param  \Spatie\OpenTelemetry\Support\Trace  $trace
      * @param  array<\Spatie\OpenTelemetry\Support\TagProviders\TagProvider>  $tagProviders
-     * @param  \Spatie\OpenTelemetry\Support\Span|null  $parentSpan
      */
     public function __construct(
         protected string $name,
