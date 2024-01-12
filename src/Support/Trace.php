@@ -9,7 +9,7 @@ class Trace
     /** @var array<string, mixed> */
     protected array $tags = [];
 
-    public static function start(string $id = null, string $name = ''): self
+    public static function start(?string $id = null, string $name = ''): self
     {
         return new self($id, $name, config('open-telemetry.trace_tag_providers'));
     }
