@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.9 - 2024-01-12
+
+### What's Changed
+
+* Fixed markdown instruction line style by @PixellUp in https://github.com/spatie/laravel-open-telemetry/pull/31
+* Bump aglipanci/laravel-pint-action from 2.2.0 to 2.3.1 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/32
+* hotfix/fix_basic_auth_error by @SardorAlif in https://github.com/spatie/laravel-open-telemetry/pull/35
+
+### New Contributors
+
+* @PixellUp made their first contribution in https://github.com/spatie/laravel-open-telemetry/pull/31
+* @SardorAlif made their first contribution in https://github.com/spatie/laravel-open-telemetry/pull/35
+
+**Full Changelog**: https://github.com/spatie/laravel-open-telemetry/compare/0.0.8...0.0.9
+
 ## 0.0.8 - 2023-07-20
 
 ### What's Changed
