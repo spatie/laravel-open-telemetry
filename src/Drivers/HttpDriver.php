@@ -16,7 +16,7 @@ class HttpDriver implements Driver
 
         $promise = Http::async()->asJson()
             ->withHeaders($this->options['headers'] ?? [])
-            ->when($this->options['basic_auth'], function (Factory $client) {
+            ->when(isset($this->options['basic_auth']), function (Factory $client) {
                 $client->withBasicAuth(
                     $this->options['basic_auth']['username'],
                     $this->options['basic_auth']['password'],
