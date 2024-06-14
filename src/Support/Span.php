@@ -36,6 +36,7 @@ class Span
         $this->tags = collect($this->tagProviders)
             ->map(fn (string $tagProvider) => app($tagProvider))
             ->flatMap(fn (TagProvider $tagProvider) => $tagProvider->tags())
+            ->mapWithKeys(fn ($value, $key) => [$key => (string) $value])
             ->toArray();
 
         $this->mergeProperties = $mergeProperties;
