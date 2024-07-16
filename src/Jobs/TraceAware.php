@@ -2,6 +2,4 @@
 
 namespace Spatie\OpenTelemetry\Jobs;
 
-interface TraceAware
-{
-}
+interface TraceAware {}

@@ -38,8 +38,7 @@ class ParsedTraceParentHeaderValue
         public string $traceId,
         public string $spanId,
         public string $flags,
-    ) {
-    }
+    ) {}
 
     public static function isValidHeaderValue(string $headerValue): bool
     {
