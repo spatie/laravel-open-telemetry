@@ -32,7 +32,7 @@ class TestCase extends Orchestra
         $this->app->bind(Stopwatch::class, config('open-telemetry.stopwatch'));
         $this->app->bind(Sampler::class, AlwaysSampler::class);
 
-        $this->memoryDriver = new MemoryDriver();
+        $this->memoryDriver = new MemoryDriver;
 
         Measure::setDriver($this->memoryDriver);
     }

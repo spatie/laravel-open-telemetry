@@ -8,11 +8,11 @@ class IdGenerator
 {
     public function traceId(): string
     {
-        return (new RandomIdGenerator())->generateTraceId();
+        return (new RandomIdGenerator)->generateTraceId();
     }
 
     public function spanId(): string
     {
-        return (new RandomIdGenerator())->generateSpanId();
+        return (new RandomIdGenerator)->generateSpanId();
     }
 }

@@ -57,7 +57,7 @@ class OpenTelemetryServiceProvider extends PackageServiceProvider
 
     protected function getMultiDriver(): MultiDriver
     {
-        $multiDriver = new MultiDriver();
+        $multiDriver = new MultiDriver;
 
         collect(config('open-telemetry.drivers'))
             ->map(function ($value, $key) {
