@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-open-telemetry` will be documented in this file.
 
+## 0.0.11 - 2025-02-21
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/50
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/spatie/laravel-open-telemetry/pull/51
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-open-telemetry/pull/52
+
+**Full Changelog**: https://github.com/spatie/laravel-open-telemetry/compare/0.0.10...0.0.11
+
 ## 0.0.10 - 2024-08-26
 
 ### What's Changed
