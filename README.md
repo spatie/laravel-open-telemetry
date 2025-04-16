@@ -1,9 +1,19 @@
-# Use Open Telemetry in your Laravel app
+<div align="left">
+    <a href="https://spatie.be/open-source?utm_source=github&utm_medium=banner&utm_campaign=laravel-open-telemetry">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://spatie.be/packages/header/laravel-open-telemetry/html/dark.webp">
+        <img alt="Logo for laravel-open-telemetry" src=" https://spatie.be/packages/header/laravel-open-telemetry/html/light.webp" height="190">
+      </picture>
+    </a>
+
+<h1>Use Open Telemetry in your Laravel app</h1>
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-open-telemetry.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-open-telemetry)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-open-telemetry/run-tests.yml?branch=main&label=Tests&style=flat-square)](https://github.com/spatie/laravel-open-telemetry/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-open-telemetry/fix-php-code-style-issues.yml?branch=main&label=Code%20Style&style=flat-square)](https://github.com/spatie/laravel-open-telemetry/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-open-telemetry.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-open-telemetry)
+    
+</div>
 
 **THIS PACKAGE IS IN DEVELOPMENT, DON'T USE IT IN PRODUCTION (YET)**
 
