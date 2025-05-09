@@ -35,6 +35,8 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 All documentation is available [on our documentation site](https://spatie.be/docs/laravel-open-telemetry).
 
+AI documentation using DeepWiki [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/spatie/laravel-open-telemetry).
+
 ## Testing
 
 ```bash
